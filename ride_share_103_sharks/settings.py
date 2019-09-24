@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django'
+    'social_django',
+    'oauth2_provider',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',  # <- Here
-                'social_django.context_processors.login_redirect',  # <- 
+                'social_django.context_processors.login_redirect',  # <-
             ],
         },
     },
@@ -102,7 +104,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# templates paths defined
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+         #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['rides/templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -121,8 +139,10 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'INSERT_PROVIDED_KEY_HERE'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'INSERT_PROVIDED_SECRET_HERE'
+
+# Do not change
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '851963747074-4q3q2ucjqi8uonm5rru432r8trohg9vi.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'jKLf1YtvFcXMzR6w8BM80NAQ'
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 

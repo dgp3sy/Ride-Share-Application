@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.contrib.auth import logout
 from django.urls import path, include
 from django.conf import settings
+from rides import views
 # from django.contrib.auth.views import logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('social_django.urls', namespace='social')),
+    path('', views.IndexView, name='index'),
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
          name='logout'),
 ]
