@@ -6,7 +6,9 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic import CreateView
 
+from .models import Ride
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -35,7 +37,24 @@ def IndexView(request):
     #     'num_instances_available': num_instances_available,
     #     'num_authors': num_authors,
     # }
+
     context = {}
+
+    #List all of the ride objects: NOT WORKING YET
+    context_object_name = 'ride_list'
+    def get_queryset(self):
+        return Ride.objects.all()
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
+class RideView(CreateView):
+    model = Ride
+    template_name = 'create_ride.html'
+    fields = ('origin', 'destination', 'departure_date')
+    def get_success_url(self):
+            return ".."
+
+
+

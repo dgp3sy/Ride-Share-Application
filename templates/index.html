@@ -14,6 +14,9 @@
               <a class="nav-link" href="#">Find Rides</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/create_ride/">Create Rides</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">My Account</a>
             </li>
               {% block content %}
@@ -25,7 +28,7 @@
                   <li class="nav-item">
                       <a class="nav-link" href="/accounts/login/">Login</a>
                   </li>
-              {% endif %}
+              {% endif %}   
               {% endblock %}
           </ul>
         </div>
@@ -40,6 +43,17 @@
     <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
     <div class="text-center">
         <input type="text" placeholder="Search for Rides" size="60">
+    </div>
+    <div class="text-center" style="padding-top:50px;">
+      {% if ride_list %}
+        <ul>
+          {% for Ride in ride_list %}
+            <li>{{ Ride.origin }} -- {{ Ride.destination }} -- {{ Ride.departure_date}}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No rides are available.</p>
+      {% endif %}
     </div>
 </div>
 </body>
