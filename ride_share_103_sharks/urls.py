@@ -22,7 +22,7 @@ from rides import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.IndexView, name='index'),  # index
+    path('', views.IndexView.as_view(), name='index'),  # index
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     # path('accounts/', include('accounts.urls')),  # Users
     path('accounts/', include('django.contrib.auth.urls')),  # login

@@ -16,37 +16,11 @@ class SignUp(generic.CreateView):
     template_name = 'signup.html'
 
 
-def IndexView(request):
-    template = loader.get_template('index.html')
-
-    """View function for home page of site."""
-
-    # Generate counts of some of the main objects
-    # num_books = Book.objects.all().count()
-    # num_instances = BookInstance.objects.all().count()
-    #
-    # # Available books (status = 'a')
-    # num_instances_available = BookInstance.objects.filter(status__exact='a').count()
-    #
-    # # The 'all()' is implied by default.
-    # num_authors = Author.objects.count()
-
-    # context = {
-    #     'num_books': num_books,
-    #     'num_instances': num_instances,
-    #     'num_instances_available': num_instances_available,
-    #     'num_authors': num_authors,
-    # }
-
-    context = {}
-
-    #List all of the ride objects: NOT WORKING YET
+class IndexView(generic.ListView):
+    template_name = 'index.html'
     context_object_name = 'ride_list'
     def get_queryset(self):
         return Ride.objects.all()
-
-    # Render the HTML template index.html with the data in the context variable
-    return render(request, 'index.html', context=context)
 
 
 class RideView(CreateView):
