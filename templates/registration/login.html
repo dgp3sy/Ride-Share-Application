@@ -1,4 +1,4 @@
-{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
     <header>
       <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <a class="navbar-brand" href="personal-page.html">Ride Share</a>
@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Find Rides</a>
@@ -17,25 +17,19 @@
               <a class="nav-link" href="#">My Account</a>
             </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
+              <a class="nav-link" href="/accounts/login/">Login</a>
           </li>
           </ul>
         </div>
       </nav>
     </header>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
-
-<body>
-<div class="container">
-    <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
-    <div class="text-center">
-        <input type="text" placeholder="Search for Rides" size="60">
-    </div>
+<!-- templates/registration/login.html -->
+<div class="jumbotron text-center ">
+    <h2>Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
 </div>
-</body>
-
-
-  <div class="footer-copyright text-center fixed-bottom py-3" style="font-size:10px"> Copyright © 2019 | Dan Perkins, Will Lampert, Dong Lee, Eric Armstrong | University of Virginia | All Rights Reserved
-  </div>

@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', # Login Authentication
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -57,7 +57,8 @@ ROOT_URLCONF = 'ride_share_103_sharks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,12 +66,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # <- Here
-                'social_django.context_processors.login_redirect',  # <-
             ],
         },
     },
 ]
+
+# Redirect after logging in
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'ride_share_103_sharks.wsgi.application'
 
@@ -105,22 +107,22 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # templates paths defined
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-         #'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'DIRS': ['rides/templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#          #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+#         'DIRS': ['templates'],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
