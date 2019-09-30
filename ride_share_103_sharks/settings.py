@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'social_django',
     'oauth2_provider',
     'corsheaders',
+    # 'rides.apps.AccountsConfig',  # Users
+
 ]
 
 MIDDLEWARE = [

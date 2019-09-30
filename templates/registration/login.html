@@ -16,9 +16,16 @@
             <li class="nav-item">
               <a class="nav-link" href="#">My Account</a>
             </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/accounts/login/">Login</a>
-          </li>
+              {% block content %}
+              {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/login/">{{user.username}}</a>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/login/">Login</a>
+                  </li>
+              {% endif %}
           </ul>
         </div>
       </nav>
@@ -26,10 +33,21 @@
 
 <!-- templates/registration/login.html -->
 <div class="jumbotron text-center ">
-    <h2>Login</h2>
+    {% if user.is_authenticated %}
+        Welcome {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+    <h2 style="padding-bottom:20px;">Login</h2>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Submit</button>
     </form>
+    <p><a href="/signup">Add Account</a></p>
+{% endif %}
+{% endblock %}
+
 </div>
+
+
+

@@ -1,4 +1,5 @@
-{% load static %}
+<!-- templates/signup.html -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
     <header>
       <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <a class="navbar-brand" href="personal-page.html">Ride Share</a>
@@ -26,24 +27,16 @@
                       <a class="nav-link" href="/accounts/login/">Login</a>
                   </li>
               {% endif %}
-              {% endblock %}
           </ul>
         </div>
       </nav>
     </header>
-
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
-
-<body>
-<div class="container">
-    <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
-    <div class="text-center">
-        <input type="text" placeholder="Search for Rides" size="60">
-    </div>
+<div class="jumbotron">
+  <h2 style="padding-bottom:20px;">Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
 </div>
-</body>
-
-
-  <div class="footer-copyright text-center fixed-bottom py-3" style="font-size:10px"> Copyright © 2019 | Dan Perkins, Will Lampert, Dong Lee, Eric Armstrong | University of Virginia | All Rights Reserved
-  </div>
+{% endblock %}
