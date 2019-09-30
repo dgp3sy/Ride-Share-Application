@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'social_django',
     'oauth2_provider',
     'corsheaders',
+    'rides.apps.RidesConfig',
+    'crispy_forms'
     # 'rides.apps.AccountsConfig',  # Users
 
 ]
@@ -160,3 +162,6 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Crispy Forms Style
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
