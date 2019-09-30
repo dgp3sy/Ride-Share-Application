@@ -14,19 +14,33 @@
               <a class="nav-link" href="#">Find Rides</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My Account</a>
+                <a class="nav-link" href="/create_ride/">Create Rides</a>
             </li>
-              {% block content %}
-              {% if user.is_authenticated %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="/accounts/myaccount/">{{user.username}}</a>
-                  </li>
-              {% else %}
-                  <li class="nav-item">
-                      <a class="nav-link" href="/accounts/login/">Login</a>
-                  </li>
-              {% endif %}
-              {% endblock %}
+                {% block content1 %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="/accounts/myaccount">My Account</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="/accounts/login/">My Account</a>
+                    </li>
+                {% endif %}
+                {% endblock %}
+                
+                {% block content %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/login/">{{user.username}}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/accounts/login/">Login</a>
+                    </li>
+                {% endif %}   
+                {% endblock %}
+
+              
           </ul>
         </div>
       </nav>

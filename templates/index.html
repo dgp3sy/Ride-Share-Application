@@ -13,6 +13,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Find Rides</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/create_ride/">Create Rides</a>
+            </li>
               {% block content1 %}
               {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -24,7 +27,7 @@
                 </li>
               {% endif %}
               {% endblock %}
-
+            
               {% block content %}
               {% if user.is_authenticated %}
                   <li class="nav-item">
