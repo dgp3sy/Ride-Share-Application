@@ -13,22 +13,13 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Find Rides</a>
             </li>
-              {% block content1 %}
-              {% if user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href="/accounts/myaccount">My Account</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href="/accounts/login/">My Account</a>
-                </li>
-              {% endif %}
-              {% endblock %}
-
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Account</a>
+            </li>
               {% block content %}
               {% if user.is_authenticated %}
                   <li class="nav-item">
-                      <a class="nav-link" href="/accounts/login/">{{user.username}}</a>
+                      <a class="nav-link" href="/accounts/myaccount/">{{user.username}}</a>
                   </li>
               {% else %}
                   <li class="nav-item">
@@ -46,11 +37,26 @@
 
 <body>
 <div class="container">
-    <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
-    <div class="text-center">
-        <input type="text" placeholder="Search for Rides" size="60">
+    <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Account Information</h1>
+    <div class="form-group">
+        <label for="usr">First Name:</label>
+        <input type="text" class="form-control" id="usr">
     </div>
+    <div class="form-group">
+        <label for="usr">Last Name:</label>
+        <input type="text" class="form-control" id="usr">
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Email:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">someone@example.com</p>
+          </div>
+        </div>
+    </form>
 </div>
+
+
 </body>
 
 

@@ -17,6 +17,8 @@ class SignUp(generic.CreateView):
 def IndexView(request):
     template = loader.get_template('index.html')
 
+
+
     """View function for home page of site."""
 
     # Generate counts of some of the main objects
@@ -39,3 +41,11 @@ def IndexView(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
+def AccountInfo(request):
+    template = loader.get_template('accountInfo.html')
+
+    context = {}
+
+    return render(request, 'accountInfo.html', context=context)

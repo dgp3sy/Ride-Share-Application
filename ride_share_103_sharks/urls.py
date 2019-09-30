@@ -21,10 +21,11 @@ from rides import views
 # from django.contrib.auth.views import logout
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', views.IndexView, name='index'),  # index
     path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
-    # path('accounts/', include('accounts.urls')),  # Users
+    path('accounts/myaccount', views.AccountInfo, name='accountInfo'),#include('accounts.urls')),  # Users
     path('accounts/', include('django.contrib.auth.urls')),  # login
     path('signup/', views.SignUp.as_view(), name='signup') # sign up new user view
 
