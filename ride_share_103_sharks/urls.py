@@ -27,5 +27,5 @@ urlpatterns = [
     # path('accounts/', include('accounts.urls')),  # Users
     path('accounts/', include('django.contrib.auth.urls')),  # login
     path('signup/', views.SignUp.as_view(), name='signup'), # sign up new user view
-    path('create_ride/', views.RideView.as_view(), name='creat_ride') #Users can create a ride
+    path('create_ride/', views.RideView.as_view(), name='create_ride') #Users can create a ride
 ]
