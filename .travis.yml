@@ -5,3 +5,10 @@ install:
 - pip install -r requirements-travis.txt
 script:
 - python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: UXjtwJ7MS7vh9ntPiCnPJHdCsTqPtqH77LyMAu+DqPKWkqbXNL78riZSL2ji9mJoj4tNFvMzGWQKkrp7wNFfW7woiyVxd9JMBgTdGlWg5BxCvR/E28dje6v5EOcHySD4jDW+IaBAeuySuxET7l5TmTXfJG9BeklytUpvmrF4WG2VQcjP+X6JXdvoEWL+USTNnFX24RyPi2XW8ZB1JTaBfJogOHyFvc/QuiHXdp7QFqHnBh//No4jAfEXU3+cHj/hA60Jc4OZnlHSzKyN2eDfrmbBYP7jwT9/u+6RWLr4CcKwil+rsfLrXFlrhIAZuNtCRrI2MYDhaTba2Modp94hUyNpb9UHyBJX+zM2U78bk1hxHjMEqelV8fMjZVs5Tf1o0yUO7jCBlPb05qh/WZZehAYIBalXaAZBZX972ESLwLqupflXi+q9J3pDJYnqqOtMIeHQAl+BZog8da5X/wdy9w8Crc2E/od/ZPZINKXe40TwZ4huMkeX2QYGFWsKkYg1CTcO07lnwf7f6DkmNcqP9ImKFbKhQgshvTAOW1ipeL5pR/qnsKitDVxWi3lCnDsCtSjnVW1Dou1IhXnrawQFXxEzEhBSwV1qdmj79eK0BS1I83+tVd691cXj6F37BWhcjG2Yc+H/jvWmprQa2iK6OzFc/MPayYC2V59FZZfc558=
+  app: project-103-sharks
+  on:
+    repo: uva-cs3240-f19/project-103-sharks
