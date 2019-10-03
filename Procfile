@@ -1,1 +1,1 @@
-web: gunicorn ride_shar_103_sharks.wsgi
+web: gunicorn ride_share_103_sharks.wsgi
