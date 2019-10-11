@@ -20,6 +20,6 @@ def main():
 if __name__ == '__main__':
     main()
     
-if '/app' in os.environ['HOME']:
+if 'HEROKU' in os.environ:
     import django_heroku
     django_heroku.settings(locals())
