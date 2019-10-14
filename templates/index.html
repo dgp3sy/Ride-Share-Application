@@ -56,9 +56,10 @@
     </div>
     <div class="text-center" style="padding-top:50px;">
       {% if ride_list %}
-        <ul>
+        <ul class="list-group">
           {% for Ride in ride_list %}
-            <li>{{ Ride.origin }} -- {{ Ride.destination }} -- {{ Ride.departure_date}}</li>
+              <button type="button" class="list-group-item list-group-item-action">
+              {{ Ride.origin }} -- {{ Ride.destination }} -- {{ Ride.departure_date}} -- {{Ride.seats_available}} seats available</button>
           {% endfor %}
         </ul>
       {% else %}

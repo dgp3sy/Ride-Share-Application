@@ -33,7 +33,7 @@ def AccountInfo(request):
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'
-    fields = ('origin', 'destination', 'departure_date')
+    fields = ('origin', 'destination', 'departure_date', 'seats_available')
     def get_success_url(self):
             return ".."
 
