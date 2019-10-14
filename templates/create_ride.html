@@ -51,12 +51,25 @@
 <div class="container">
     <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Create a Ride</h1>
     <div class="text-center" style="padding-top:50px;">
+
        {% load crispy_forms_tags %}
-          <form method="post" novalidate>
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-success">Create Ride</button>  
-          </form>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-6">
+              {{ form.origin|as_crispy_field }}
+            </div>
+            <div class="col-6">
+               {{ form.destination|as_crispy_field }}
+            </div>
+          </div>
+
+          {{ form.departure_date|as_crispy_field }}
+          
+          {{ form.seats_available|as_crispy_field }}
+          <button type="submit" class="btn btn-success">Save person</button>
+        </form>
+
     </div>
 </div>
 </body>
