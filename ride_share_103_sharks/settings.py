@@ -167,7 +167,6 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Activate Django-Heroku.
-import os
-if '/rides' in os.environ['HOME']:
+if 'HEROKU' in os.environ:
     import django_heroku
     django_heroku.settings(locals())
