@@ -2,13 +2,17 @@ language: python
 python:
 - '3.6'
 install:
-- pip install -r requirements.txt
+- pip install -r requirements-travis.txt
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+services:
+- postgresql
 script:
 - python manage.py test
 deploy:
   provider: heroku
   api_key:
-    secure: UXjtwJ7MS7vh9ntPiCnPJHdCsTqPtqH77LyMAu+DqPKWkqbXNL78riZSL2ji9mJoj4tNFvMzGWQKkrp7wNFfW7woiyVxd9JMBgTdGlWg5BxCvR/E28dje6v5EOcHySD4jDW+IaBAeuySuxET7l5TmTXfJG9BeklytUpvmrF4WG2VQcjP+X6JXdvoEWL+USTNnFX24RyPi2XW8ZB1JTaBfJogOHyFvc/QuiHXdp7QFqHnBh//No4jAfEXU3+cHj/hA60Jc4OZnlHSzKyN2eDfrmbBYP7jwT9/u+6RWLr4CcKwil+rsfLrXFlrhIAZuNtCRrI2MYDhaTba2Modp94hUyNpb9UHyBJX+zM2U78bk1hxHjMEqelV8fMjZVs5Tf1o0yUO7jCBlPb05qh/WZZehAYIBalXaAZBZX972ESLwLqupflXi+q9J3pDJYnqqOtMIeHQAl+BZog8da5X/wdy9w8Crc2E/od/ZPZINKXe40TwZ4huMkeX2QYGFWsKkYg1CTcO07lnwf7f6DkmNcqP9ImKFbKhQgshvTAOW1ipeL5pR/qnsKitDVxWi3lCnDsCtSjnVW1Dou1IhXnrawQFXxEzEhBSwV1qdmj79eK0BS1I83+tVd691cXj6F37BWhcjG2Yc+H/jvWmprQa2iK6OzFc/MPayYC2V59FZZfc558=
+    secure: GcBFkFW1dzs3623PfHtkDOQWdVOn+WYzym6LbucwGS7TgTe9c0Izk/XSdDVkgCHNjn/nsBBOGjptCGL1q16g2w+SRsbh1CpH/YcFIuteq9xnSWcq2hVbmpJJ5I91In3fL7lh0/Sw+XcUxqQgAt3HgBJrBdQi242oIdfgR1UVAPQ1F/FvUpyVg7Cmf2LHqH7euCALhRMMK2Yhei08VvF+MYWzXifYfHH6Id9ddpp3bO652o5n682q9Eg9v/MJiEKTG+oJEsFiHMRZBejK9ePrnKpKM6ePII812IKnqdPpVXCj5DKKzIx50+XJkz+ZjQLuZosvy8GOMC/oY9kePPCHiftsageSfGPqgmF2yXzjqmSet2zjQKziVUjDUznN49Pkz0nAWO1yQ8KX0YIcz2duHlyQVCWM7L8Nw5Lm2fbyWWgf3jor3X9h1RGUKjnL9/aQ93xa7Df5C4lHNLA15QF/THSHros7ww6OzSWQgaQ9CDYw+60Cexs3cVGtFZ/bSMmJKPLRMev4kDPWahthpdOpXXCsX6xo70HkmDPUdCZn0ODiIP5P/GLDmlHqNbTn0UAhG/JSCX1zXwG9P2tyDWZovwI87aywGsFFsW5L8xfKwGeedmeeJiv+yIdRqw7SyzHhblMK4T9Net/mDCH7L5i+DNyf9+0XWcL0Y0yXsI0nGHk=
   app: project-103-sharks
   on:
     repo: uva-cs3240-f19/project-103-sharks

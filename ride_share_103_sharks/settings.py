@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os, django_heroku
+import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,10 +86,15 @@ WSGI_APPLICATION = 'ride_share_103_sharks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'postgres',
+        'USER' : 'postgres',
+        'PASSWORD' : 'password',
+        'HOST' : 'localhost',
+        'PORT' : '5432'
     }
 }
+
 
 
 # Password validation
@@ -147,8 +152,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Do not change
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '851963747074-4q3q2ucjqi8uonm5rru432r8trohg9vi.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'jKLf1YtvFcXMzR6w8BM80NAQ'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '797577005724-rrijfu5ik1hjag51ccn41t091g4nkja9.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '42JciytHOnTgmUn6JnxU39tX'
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 
@@ -166,6 +171,7 @@ STATIC_URL = '/static/'
 #Crispy Forms Style
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# Activate Django-Heroku.
 # Activate Django-Heroku.
 try:
     # Configure Django App for Heroku.
