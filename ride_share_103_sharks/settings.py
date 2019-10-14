@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os, django_heroku
+import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -96,6 +96,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -170,6 +171,7 @@ STATIC_URL = '/static/'
 #Crispy Forms Style
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# Activate Django-Heroku.
 # Activate Django-Heroku.
 try:
     # Configure Django App for Heroku.
