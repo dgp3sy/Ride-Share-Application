@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'ride_share_103_sharks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE' : 'django.db.backends.postgresql.postgresql',
-        'NAME' : 'jrtzimwt',
-        'USER' : 'jrtzimwt',
-        'PASSWORD' : 'd-tQ7J8ZbtXnleZwtCXZgTCQeRxUcH9J',
-        'HOST' : 'salt.db.elephantsql.com',
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'postgres',
+        'USER' : 'postgres',
+        'PASSWORD' : 'password',
+        'HOST' : 'localhost',
         'PORT' : '5432'
     }
 }
