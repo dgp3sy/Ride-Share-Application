@@ -87,8 +87,8 @@ WSGI_APPLICATION = 'ride_share_103_sharks.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'shark',
-        'USER' : 'admin',
+        'NAME' : 'postgres',
+        'USER' : 'postgres',
         'PASSWORD' : 'password',
         'HOST' : 'localhost',
         'PORT' : '5432'
