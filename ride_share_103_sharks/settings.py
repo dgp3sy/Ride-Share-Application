@@ -147,8 +147,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Do not change
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '851963747074-4q3q2ucjqi8uonm5rru432r8trohg9vi.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'jKLf1YtvFcXMzR6w8BM80NAQ'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '797577005724-rrijfu5ik1hjag51ccn41t091g4nkja9.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '42JciytHOnTgmUn6JnxU39tX'
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 
