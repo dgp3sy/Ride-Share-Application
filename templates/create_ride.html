@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 {% load static %}
 
 
@@ -50,7 +50,7 @@
 <body>
 <div class="container">
     <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Create a Ride</h1>
-    <div class="text-center" style="padding-top:50px;">
+    <div class="text-center" style="padding-top:20px;">
 
        {% load crispy_forms_tags %}
         <form method="post" novalidate>
@@ -64,21 +64,53 @@
             </div>
           </div>
 
-          {{ form.departure_date|as_crispy_field }}
-          
-          {{ form.seats_available|as_crispy_field }}
-          <button type="submit" class="btn btn-success">Save person</button>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group ">
+                <label class="control-label " for="date">
+                  Date*
+                </label>
+                <input class="form-control" id="departure_date" name="departure_date" placeholder="MM/DD/YYYY" type="text" required>
+              </div>
+            </div>
+            <div class="col-6">
+              {{ form.seats_available|as_crispy_field }}
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success">Create Ride</button>
         </form>
 
     </div>
 </div>
 </body>
 
+ <div class="footer-copyright text-center fixed-bottom py-3" style="font-size:10px"> 
+ Copyright © 2019 | Dan Perkins, Will Lampert, Dong Lee, Eric Armstrong | University of Virginia | All Rights Reserved
+  </div>
+
+
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
 
 
- <div class="footer-copyright text-center fixed-bottom py-3" style="font-size:10px"> Copyright © 2019 | Dan Perkins, Will Lampert, Dong Lee, Eric Armstrong | University of Virginia | All Rights Reserved
-  </div>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="departure_date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
