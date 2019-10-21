@@ -76,7 +76,6 @@ TEMPLATES = [
 ]
 
 # Redirect after logging in
-LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'ride_share_103_sharks.wsgi.application'
 
@@ -156,9 +155,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '797577005724-rrijfu5ik1hjag51ccn41t091g4nkja9.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '42JciytHOnTgmUn6JnxU39tX'
 
 LOGIN_URL = '/auth/login/google-oauth2/'
+#redirects to home page after login and logout
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/' 
 LOGOUT_REDIRECT_URL = '/'
+
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
