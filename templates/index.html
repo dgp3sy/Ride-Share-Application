@@ -59,10 +59,10 @@
         <ul class="list-group">
           {% for Ride in ride_list %}
               <button type="button" class="list-group-item list-group-item-action">
-                Going to {{Ride.destination}} on {{Ride.departure_date}}
+                Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
               </button>
               <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
-                This ride is leaving from {{Ride.origin}}. There are currently {{Ride.seats_available}} seats available.
+                This ride is leaving from {{Ride.origin}}, {{Ride.origin_state}}. There are currently {{Ride.seats_available}} seats available.
               </div>
           {% endfor %}
         </ul>

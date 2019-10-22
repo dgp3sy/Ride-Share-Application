@@ -7,7 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView
-
 from .models import Ride
 
 class SignUp(generic.CreateView):
@@ -33,7 +32,7 @@ def AccountInfo(request):
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'
-    fields = ('origin', 'destination', 'departure_date', 'seats_available')
+    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'seats_available')
     def get_success_url(self):
             return ".."
 
