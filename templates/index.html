@@ -52,7 +52,12 @@
     <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
     <div class="text-center">
         <!-- SEARCH BAR -->
-        <input type="text" placeholder="Search for Rides" size="60">
+        <input type="text" placeholder="Enter Location" size="60">
+        <!-- Search Select -->
+        <select>
+          <option value="destination">Search by Destination</option>
+          <option value="origin">Search by Origin</option>
+        </select>
     </div>
     <div class="text-center" style="padding-top:50px;">
       {% if ride_list %}
@@ -63,7 +68,12 @@
               </button>
               <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
                 This ride is leaving from {{Ride.origin}}, {{Ride.origin_state}}. There are currently {{Ride.seats_available}} seats available.
+                  {% if Ride.seats_available > 0 %}
+                <button type="button" class="btn-primary" name="joinRide">Join Ride</button>
+                  {% endif %}
               </div>
+
+
           {% endfor %}
         </ul>
       {% else %}
