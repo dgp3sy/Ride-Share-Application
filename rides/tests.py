@@ -2,7 +2,7 @@ from django.test import TestCase
 
 from django.test import TestCase
 from rides.models import Ride
-from rides.models import User
+# from rides.models import User
 import datetime
 # Create your tests here.
 
