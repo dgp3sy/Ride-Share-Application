@@ -46,17 +46,7 @@
 
 <!-- templates/registration/login.html -->
 <div class="jumbotron text-center ">
-    <!-- {% if user.is_authenticated %}
-        Welcome {{ user.username }}!
-        <p><a href="{% url 'logout' %}">Logout</a></p> -->
-    <!-- {% else %}
-        <h2 style="padding-bottom:20px;">Login</h2>
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit">Submit</button>
-        </form>
-        <p><a href="/signup">Add Account</a></p> -->
+    
         {% if user.is_authenticated %}
           <p>Logged as {{ user.username }}</p>
         <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
@@ -65,7 +55,7 @@
             Login
           </a>
         {% endif %}
-    {% endif %}
+    
 {% endblock %}
 
 </div>

@@ -10,6 +10,7 @@ from django.views.generic import CreateView
 from .models import Ride
 from django.db.models import F
 
+
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
@@ -41,7 +42,8 @@ def AccountInfo(request):
 
     context = {}
 
-    return render(request, 'accountInfo.html', context=context)
+    return render(request, 'accountInfo.html', context=context) 
+
     
 class RideView(CreateView):
     model = Ride
@@ -49,6 +51,5 @@ class RideView(CreateView):
     fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'seats_available')
     def get_success_url(self):
             return ".."
-
 
 

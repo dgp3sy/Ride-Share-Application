@@ -29,8 +29,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # login
     path('signup/', views.SignUp.as_view(), name='signup'), # sign up new user view
     path('create_ride/', views.RideView.as_view(), name='create_ride'), #Users can create a ride
-
     path('', include('social_django.urls', namespace='social')),
-    path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},name='logout')
 
 ]
