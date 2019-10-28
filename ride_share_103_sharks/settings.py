@@ -146,6 +146,7 @@ USE_TZ = True
 
 # Google OAuth Login
 AUTHENTICATION_BACKENDS = (
+
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -172,8 +173,6 @@ STATIC_URL = '/static/'
 #Crispy Forms Style
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# Activate Django-Heroku.
-# Activate Django-Heroku.
 try:
     # Configure Django App for Heroku.
     import django_heroku

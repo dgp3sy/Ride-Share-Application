@@ -10,6 +10,7 @@ from django.views.generic import CreateView
 
 from .models import Ride
 
+
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
@@ -21,14 +22,13 @@ class IndexView(generic.ListView):
     context_object_name = 'ride_list'
     def get_queryset(self):
         return Ride.objects.all()
-
-
-def AccountInfo(request):
+    
+""" def AccountInfo(request):
     template = loader.get_template('accountInfo.html')
 
     context = {}
 
-    return render(request, 'accountInfo.html', context=context)
+    return render(request, 'accountInfo.html', context=context) """
     
 class RideView(CreateView):
     model = Ride
