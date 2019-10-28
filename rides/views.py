@@ -9,6 +9,7 @@ from django.views import generic
 from django.views.generic import CreateView
 from .models import Ride
 from django.db.models import F
+from django.db.models import Q
 
 
 class SignUp(generic.CreateView):
@@ -27,7 +28,14 @@ class IndexView(generic.ListView):
         self.GET = None
 
     def get_queryset(self):
-        return Ride.objects.all()
+        query = self.request.GET.get('search')
+        if query == None:
+            return Ride.objects.all()
+        else :
+            object_list = Ride.objects.filter(
+                Q(origin__icontains=query) | Q(destination__icontains=query)
+            )
+            return object_list
 
     def join_ride(self, request):
         if request.GET.get('joinRide'):

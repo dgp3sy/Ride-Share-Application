@@ -47,15 +47,21 @@
 <body>
 <div class="container">
     <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
+
     <div class="text-center">
-        <!-- SEARCH BAR -->
-        <input type="text" placeholder="Enter Location" size="60">
+        <!-- Search Bar -->
+        <form action="{% url 'index' %}" method="get">
+          <input name="search" type="text" placeholder="Search...">
+        </form>
         <!-- Search Select -->
         <select>
           <option value="destination">Search by Destination</option>
           <option value="origin">Search by Origin</option>
         </select>
+        <!-- Clear Search Button -->
+         <a class="btn btn-primary" href=".." role="button">Clear Search</a>
     </div>
+
     <div class="text-center" style="padding-top:50px;">
       {% if ride_list %}
         <ul class="list-group">
