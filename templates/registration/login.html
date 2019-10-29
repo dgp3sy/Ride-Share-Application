@@ -44,15 +44,15 @@
       </nav>
     </header>
 
-<!-- templates/registration/login.html -->
-<div class="jumbotron text-center ">
+        <!-- templates/registration/login.html -->
+        <div class="jumbotron text-center ">
     
         {% if user.is_authenticated %}
           <p>Logged as {{ user.username }}</p>
         <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
-            Login
+            Login with Google
           </a>
         {% endif %}
     

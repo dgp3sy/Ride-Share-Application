@@ -10,6 +10,17 @@ from django.views.generic import CreateView
 from .models import Ride
 from django.db.models import F
 
+#imports for profile:
+from django.shortcuts import redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
+from django.db import transaction
+from .models import Profile
+from .forms import UserForm,ProfileForm
+
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -36,13 +47,30 @@ class IndexView(generic.ListView):
             ride.save(update_fields=["seats_available"])
             return render(request, 'index.html')
 
+@login_required
+@transaction.atomic
+def Account_Info(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
 
-def AccountInfo(request):
-    template = loader.get_template('accountInfo.html')
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return HttpResponseRedirect('/')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'accountInfo.html', { #was profile.html
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
 
-    context = {}
-
-    return render(request, 'accountInfo.html', context=context) 
+def Logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
     
 class RideView(CreateView):
