@@ -1,5 +1,6 @@
 {% load static %}
 
+<<<<<<< HEAD
 <header>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
       <a class="navbar-brand" href="/">Ride Share</a>
@@ -13,6 +14,23 @@
           </li>
           
               {% block navbar %}
+=======
+    <header>
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="/">Ride Share</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="/create_ride/">Create Rides</a>
+            </li>
+              {% block content1 %}
+>>>>>>> 2ecfcb89a90cb69ade5d959e4e83bfcd6a774766
               {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="/create_ride/">Create Rides</a>

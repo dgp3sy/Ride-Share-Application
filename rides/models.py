@@ -28,3 +28,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+# User-to-user messaging feature, url:https://stackoverflow.com/questions/32687461/how-to-create-a-user-to-user-message-system-using-django
+# class Message(models.Model):
+#     sender = models.ForeignKey(User, related_name="sender")
+#     receiver = models.ForeignKey(User, related_name="receiver")
+#     msg_content = models.CharField(max_length=640)
+#     timestamp = models.DateTimeField(default=datetime.now)
