@@ -47,19 +47,19 @@
 <body>
 <div class="container">
     <h1 class="text-center" style="padding-top:50px; padding-bottom:25px;">Search for Rides</h1>
-
+    <!-- Search Ride list -->
     <div class="text-center">
+      <form action="{% url 'index' %}" method="get">
         <!-- Search Bar -->
-        <form action="{% url 'index' %}" method="get">
-          <input name="search" type="text" placeholder="Search...">
-        </form>
+        <input name="search" type="text" placeholder="Search...">
         <!-- Search Select -->
-        <select>
+        <select name="search_choice">
           <option value="destination">Search by Destination</option>
           <option value="origin">Search by Origin</option>
         </select>
-        <!-- Clear Search Button -->
-         <a class="btn btn-primary" href=".." role="button">Clear Search</a>
+      </form>
+      <!-- Clear Search Button -->
+      <a class="btn btn-primary" href=".." role="button">Clear Search</a>
     </div>
 
     <div class="text-center" style="padding-top:50px;">
@@ -75,8 +75,6 @@
                 <button type="button" class="btn-primary" name="joinRide">Join Ride</button>
                   {% endif %}
               </div>
-
-
           {% endfor %}
         </ul>
       {% else %}

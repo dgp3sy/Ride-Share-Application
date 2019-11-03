@@ -29,13 +29,20 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('search')
+        select = self.request.GET.get('search_choice')
         if query == None:
             return Ride.objects.all()
         else :
-            object_list = Ride.objects.filter(
-                Q(origin__icontains=query) | Q(destination__icontains=query)
-            )
-            return object_list
+            if(select == "origin"):
+                object_list = Ride.objects.filter(
+                    Q(origin__icontains=query) | Q(origin_state__icontains=query)
+                )
+                return object_list
+            if(select == "destination"):
+                object_list = Ride.objects.filter(
+                    Q(destination__icontains=query) | Q(destination_state__icontains=query)
+                )
+                return object_list
 
     def join_ride(self, request):
         if request.GET.get('joinRide'):
