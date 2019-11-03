@@ -9,6 +9,7 @@ from django.views import generic
 from django.views.generic import CreateView
 from .models import Ride
 from django.db.models import F
+from django.db.models import Q
 
 #imports for profile:
 from django.shortcuts import redirect
@@ -38,7 +39,21 @@ class IndexView(generic.ListView):
         self.GET = None
 
     def get_queryset(self):
-        return Ride.objects.all()
+        query = self.request.GET.get('search')
+        select = self.request.GET.get('search_choice')
+        if query == None:
+            return Ride.objects.all()
+        else :
+            if(select == "origin"):
+                object_list = Ride.objects.filter(
+                    Q(origin__icontains=query) | Q(origin_state__icontains=query)
+                )
+                return object_list
+            if(select == "destination"):
+                object_list = Ride.objects.filter(
+                    Q(destination__icontains=query) | Q(destination_state__icontains=query)
+                )
+                return object_list
 
     def join_ride(self, request):
         if request.GET.get('joinRide'):
