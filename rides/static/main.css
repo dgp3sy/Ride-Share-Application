@@ -1,15 +1,19 @@
-#page-container {
-  position: relative;
-  min-height: 50vh;
+html,body {
+   margin:0;
+   padding:0;
+   height:100%;
 }
-
-#content-wrap {
-  padding-bottom: 10px;    /* Footer height */
+#container {
+   min-height:100%;
+   position:relative;
 }
-
+#body {
+   padding:10px;
+   padding-bottom:30px;   /* Height of the footer */
+}
 #footer {
-  position: relative;
-  bottom: 0px;
-  width: 100%;
-  height: 10px;            /* Footer height */
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:30px;   /* Height of the footer */
 }
