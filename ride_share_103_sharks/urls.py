@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import logout
 from django.urls import path, include
+from django.conf.urls import url
 from django.conf import settings
 from rides import views
 # from django.contrib.auth.views import logout
@@ -30,5 +31,6 @@ urlpatterns = [
     path('signup/', views.SignUp.as_view(), name='signup'), # sign up new user view
     path('create_ride/', views.RideView.as_view(), name='create_ride'), #Users can create a ride
     path('', include('social_django.urls', namespace='social')),
+    url(r'(?P<ride_id>\d+)/$', views.join_ride, name='join_ride'),
 
 ]

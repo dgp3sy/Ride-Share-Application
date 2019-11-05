@@ -42,9 +42,9 @@ def AccountInfo(request):
 
     context = {}
 
-    return render(request, 'accountInfo.html', context=context) 
+    return render(request, 'accountInfo.html', context=context)
 
-    
+
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'
@@ -53,3 +53,8 @@ class RideView(CreateView):
             return ".."
 
 
+def join_ride(request, **kwargs):
+    id_to_join = kwargs['ride_id']
+    new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
+    Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+    return render(request, 'join_ride.html')
