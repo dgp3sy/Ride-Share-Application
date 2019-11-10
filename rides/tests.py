@@ -37,59 +37,95 @@ class TestCases(TestCase):
     #     self.assertEqual(john.email, "jd3aa@virginia.edu")
     #     self.assertEqual(jane.email, "jd4ab@virginia.edu")
     #     self.assertEqual(mark.email, "mark@virginia.edu")
-    def test_destination(self):
+    def test_destination_cho(self):
         cville = Ride.objects.get(origin="Charlottesville")
-        vb757 = Ride.objects.get(origin="Virginia Beach")
-        blacksburg = Ride.objects.get(origin="Blacksburg")
-
         self.assertEqual(cville.destination, "Blacksburg")
-        self.assertEqual(blacksburg.destination, "Washington DC")
+
+    def test_destination_vb(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
         self.assertEqual(vb757.destination, "Norfolk")
 
-    def test_seats_available(self):
-        cville = Ride.objects.get(origin="Charlottesville")
-        vb757 = Ride.objects.get(origin="Virginia Beach")
+    def test_destination_b(self):
         blacksburg = Ride.objects.get(origin="Blacksburg")
+        self.assertEqual(blacksburg.destination, "Washington DC")
 
+
+
+
+    def test_seats_available_cho(self):
+        cville = Ride.objects.get(origin="Charlottesville")
         self.assertEqual(cville.seats_available, 4)
+
+    def test_seats_available_vb(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
         self.assertEqual(vb757.seats_available, 1000)
+    def test_seats_available_b(self):
+        blacksburg = Ride.objects.get(origin="Blacksburg")
         self.assertEqual(blacksburg.seats_available, 0)
 
-    def test_year(self):
-        cville = Ride.objects.get(origin="Charlottesville")
-        vb757 = Ride.objects.get(origin="Virginia Beach")
-        blacksburg = Ride.objects.get(origin="Blacksburg")
 
+
+
+    def test_year_cho(self):
+        cville = Ride.objects.get(origin="Charlottesville")
         self.assertEqual(cville.departure_date.strftime("%Y"), "2019")
-        self.assertEqual(blacksburg.departure_date.strftime("%Y"), "2019")
+    def test_year_vb(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
         self.assertEqual(vb757.departure_date.strftime("%Y"), "2019")
-
-    def test_month(self):
-        cville = Ride.objects.get(origin="Charlottesville")
-        vb757 = Ride.objects.get(origin="Virginia Beach")
+    def test_year_b(self):
         blacksburg = Ride.objects.get(origin="Blacksburg")
+        self.assertEqual(blacksburg.departure_date.strftime("%Y"), "2019")
 
+
+
+    def test_month1(self):
+        cville = Ride.objects.get(origin="Charlottesville")
         self.assertEqual(cville.departure_date.strftime("%m"), "10")
-        self.assertEqual(blacksburg.departure_date.strftime("%m"), "10")
+    def test_month2(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
         self.assertEqual(vb757.departure_date.strftime("%m"), "10")
-
-    def test_day(self):
-        cville = Ride.objects.get(origin="Charlottesville")
-        vb757 = Ride.objects.get(origin="Virginia Beach")
+    def test_month3(self):
         blacksburg = Ride.objects.get(origin="Blacksburg")
+        self.assertEqual(blacksburg.departure_date.strftime("%m"), "10")
 
+
+
+    def test_day_cho(self):
+        cville = Ride.objects.get(origin="Charlottesville")
         self.assertEqual(cville.departure_date.strftime("%d"), "10")
-        self.assertEqual(blacksburg.departure_date.strftime("%d"), "20")
-        self.assertEqual(vb757.departure_date.strftime("%d"), "30")
-
-    def test_date_type(self):
-        cville = Ride.objects.get(origin="Charlottesville")
+    def test_day_vb(self):
         vb757 = Ride.objects.get(origin="Virginia Beach")
+        self.assertEqual(vb757.departure_date.strftime("%d"), "30")
+    def test_day_b(self):
         blacksburg = Ride.objects.get(origin="Blacksburg")
+        self.assertEqual(blacksburg.departure_date.strftime("%d"), "20")
 
+
+
+    def test_date_type_cho(self):
+        cville = Ride.objects.get(origin="Charlottesville")
         self.assertEqual(type(cville.departure_date), type(datetime.date(2019, 10, 10)))
-        self.assertEqual(type(blacksburg.departure_date), type(datetime.date(2019, 10, 10)))
+    def test_data_type_vb(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
         self.assertEqual(type(vb757.departure_date), type(datetime.date(2019, 10, 10)))
+    def test_data_type_b(self):
+        blacksburg = Ride.objects.get(origin="Blacksburg")
+        self.assertEqual(type(blacksburg.departure_date), type(datetime.date(2019, 10, 10)))
+
+
+
+    def test_id_pk1(self):
+        cville = Ride.objects.get(origin="Charlottesville")
+        blacksburg = Ride.objects.get(origin="Blacksburg")
+        self.assertNotEqual(cville.id, blacksburg.id)
+    def test_id_pk2(self):
+        blacksburg = Ride.objects.get(origin="Blacksburg")
+        vb757 = Ride.objects.get(origin="Virginia Beach")
+        self.assertNotEqual(vb757.id, blacksburg.id)
+    def test_id_pk3(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
+        cville = Ride.objects.get(origin="Charlottesville")
+        self.assertNotEqual(cville.id, vb757.id)
 
     def test_dummy_test_case(self):
         self.assertEqual(1, 1)
