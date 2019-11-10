@@ -19,6 +19,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
+#was having an issue where first time users couldnt log in OR returning users couldnt log in -- might be fixed?
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created: #interpret as "new user" 
