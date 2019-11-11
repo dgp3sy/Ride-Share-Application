@@ -60,6 +60,7 @@ class IndexView(generic.ListView):
             ride = get_object_or_404(Ride, created_by=request.user)
             ride.seats_available = F('seats_available') - 1
             ride.save(update_fields=["seats_available"])
+            #user.ride_list.add(ride)
             return render(request, 'index.html')
 
 @login_required
@@ -96,3 +97,8 @@ class RideView(CreateView):
             return ".."
 
 
+def join_ride(request, **kwargs):
+    id_to_join = kwargs['ride_id']
+    new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
+    Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+    return render(request, 'join_ride.html')
