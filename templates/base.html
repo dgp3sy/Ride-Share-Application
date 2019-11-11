@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" /> 
+</head>
+
+<div id="container">
+  <div id="header">
+  <header>
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="/">Ride Share</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            
+                {% block navbar %}
+                {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="/create_ride/">Create Rides</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/myaccount">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/login/">{{user.username}}</a>
+                  </li>
+                    
+                {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="/create_ride/">Create Rides</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/login/">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/login/">Login</a>
+                  </li>
+                {% endif %}
+                {% endblock %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <div id="body">
+    <body>
+      {% block content %}
+      {% endblock %}
+    </body>
+  </div>
+  <div id="footer" class="text-center">
+    Copyright © 2019 | Dan Perkins, Will Lampert, Dong Lee, Eric Armstrong | University of Virginia | All Rights Reserved
+  </div>
+</div>
+</html>
+
