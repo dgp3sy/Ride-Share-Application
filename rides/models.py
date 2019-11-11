@@ -19,6 +19,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+    #ride_list = models.ManyToManyField(Ride)
 
 #was having an issue where first time users couldnt log in OR returning users couldnt log in -- might be fixed?
 @receiver(post_save, sender=User)

@@ -60,6 +60,7 @@ class IndexView(generic.ListView):
             ride = get_object_or_404(Ride, created_by=request.user)
             ride.seats_available = F('seats_available') - 1
             ride.save(update_fields=["seats_available"])
+            #user.ride_list.add(ride)
             return render(request, 'index.html')
 
 @login_required
