@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.conf import settings
 
 class Ride(models.Model):
     origin = models.CharField(max_length=50, blank=False)
@@ -11,6 +12,7 @@ class Ride(models.Model):
     destination_state = models.CharField(max_length=50, default="N/A", blank=False)
     departure_date = models.DateField(blank=False)
     seats_available = models.IntegerField(choices = [(i,i) for i in range(1,6)])
+    passenger_list = models.ManyToManyField(User, blank=True)
     def __str__(self):
         return '%s %s %s' % (self.origin, self.destination, self.departure_date)
 

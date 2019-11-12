@@ -29,6 +29,16 @@
               </button>
               <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
                 This ride is leaving from {{Ride.origin}}, {{Ride.origin_state}}. There are currently {{Ride.seats_available}} seats available.
+
+            
+                 {% for User in Ride.passenger_list.all %}
+                 {{User}} is going.
+
+                 {% endfor %}
+
+        
+
+
                   {% if Ride.seats_available > 0 %}
                 <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' ride_id=Ride.id%}">Join Ride</button>
                   {% endif %}
