@@ -12,7 +12,10 @@ class Ride(models.Model):
     destination = models.CharField(max_length=50, blank=False)
     destination_state = models.CharField(max_length=50, default="N/A", blank=False)
     departure_date = models.DateField(blank=False)
-    seats_available = models.PositiveIntegerField(choices = [(i,i) for i in range(1,6)], validators=[MinValueValidator(0), MaxValueValidator(6)])
+    asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
+    seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
+
+    # seats_available = models.PositiveIntegerField(choices = [(i,i) for i in range(1,6)], validators=[MinValueValidator(0), MaxValueValidator(6)])
     def __str__(self):
         return '%s %s %s' % (self.origin, self.destination, self.departure_date)
 

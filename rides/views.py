@@ -92,7 +92,7 @@ def Logout(request):
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'
-    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'seats_available')
+    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'asking_price', 'seats_available')
     def get_success_url(self):
             return ".."
 

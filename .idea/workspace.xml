@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ride_share_103_sharks/static/images/ride_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/staticfiles/images/ride_image.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ride_share_103_sharks/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ride_share_103_sharks/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rides/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/create_ride.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/create_ride.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +34,13 @@
   <component name="ProjectId" id="1TD9l18amU6QpkOPaDh0hCrc6c2" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ride_share_103_sharks/static/images" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Danny Perkins\PycharmProjects\project-103-sharks\ride_share_103_sharks\static\images" />
+      <recent name="C:\Users\Danny Perkins\PycharmProjects\project-103-sharks\staticfiles\images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -105,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573425879332</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added test cases, altered seats_available to constrict between 0-6">
+      <created>1573615264865</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573615264865</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +142,7 @@
     <MESSAGE value="more test cases written" />
     <MESSAGE value="join ride page UI fixed" />
     <MESSAGE value="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py" />
+    <MESSAGE value="added test cases, altered seats_available to constrict between 0-6" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test cases, altered seats_available to constrict between 0-6" />
   </component>
 </project>
