@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py">
-      <change afterPath="$PROJECT_DIR$/templates/join_ride.html" afterDir="false" />
+    <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ride_share_103_sharks/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ride_share_103_sharks/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0003_auto_20191014_1847.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0004_auto_20191014_1849.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0005_auto_20191014_2142.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0006_auto_20191021_2204.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0007_auto_20191028_0926.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accountInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accountInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +32,13 @@
   <component name="ProjectId" id="1TD9l18amU6QpkOPaDh0hCrc6c2" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ride_share_103_sharks/static/images" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Danny Perkins\PycharmProjects\project-103-sharks\ride_share_103_sharks\static\images" />
+      <recent name="C:\Users\Danny Perkins\PycharmProjects\project-103-sharks\staticfiles\images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -52,6 +51,34 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="project-103-sharks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rides" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rides/tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -85,7 +112,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573425879332</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added test cases, altered seats_available to constrict between 0-6">
+      <created>1573615264865</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573615264865</updated>
+    </task>
+    <task id="LOCAL-00005" summary="UI changes to the join ride page">
+      <created>1573660968792</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573660968792</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +147,8 @@
     <MESSAGE value="more test cases written" />
     <MESSAGE value="join ride page UI fixed" />
     <MESSAGE value="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py" />
+    <MESSAGE value="added test cases, altered seats_available to constrict between 0-6" />
+    <MESSAGE value="UI changes to the join ride page" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI changes to the join ride page" />
   </component>
 </project>

@@ -7,17 +7,29 @@
     <div class="text-center">
       <form action="{% url 'index' %}" method="get">
         <!-- Search Bar -->
-        <input name="search" type="text" placeholder="Search...">
-        <!-- Search Select -->
-        <select name="search_choice">
-          <option value="destination">Search by Destination</option>
-          <option value="origin">Search by Origin</option>
-        </select>
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-8">
+                      <div class="md-form mt-0">
+                        <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search" style="margin-bottom:10px">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <!-- Search Select -->
+                      <select class="browser-default custom-select" name="search_choice">
+                        <option class="dropdown-item" value="destination">Search by Destination</option>
+                        <option class="dropdown-item" value="origin">Search by Origin</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                    <input type="submit" class="btn btn-success" value="Search" style="width: 50%; margin:10px; padding-left:50px; padding-right:50px;">
+                  </div>
+              </div>
+          </div>
       </form>
-      <!-- Clear Search Button -->
-      <div style="padding-top: 10px">
-        <a class="btn btn-primary" href=".." role="button">Clear Search</a>
-      </div>
+
     </div>
 
     <div class="text-center" style="padding-top:50px;">
@@ -28,11 +40,30 @@
                 Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
               </button>
               <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
-                This ride is leaving from {{Ride.origin}}, {{Ride.origin_state}}. There are currently {{Ride.seats_available}} seats available.
-                  {% if Ride.seats_available > 0 %}
-                    <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' ride_id=Ride.id%}">Join Ride</button>
-                  {% endif %}
+        <div class="card mb-3">
+                          <div class="row no-gutters">
+                           <div class="col-md-4">
+                              <img src="https://c.stocksy.com/a/8WB500/z9/1235916.jpg?1567070555" class="card-img" alt="...">
+                          </div>
+                          <div class="col-md-8">
+                              <div class="card-body">
+                                  <h5 class="card-title">{Ride.User}'s Ride</h5>
+                                  <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
+                                  <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
+                                  <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
+                                  <p class="card-text">The following users are going: {{Ride.passenger_list}}</p>
+                                  {% if user in Ride.passenger_list %}
+                                        <button type="button" class="btn btn-danger" name="leaveRide"  onclick="location.href={% url 'leave_ride' ride_id=Ride.id%}">Leave Ride</button>
+                                  {% endif %}
+                                  {% if Ride.seats_available > 0 %}
+                                        <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' ride_id=Ride.id%}">Join Ride</button>
+                                  {% endif %}
+                      </div>
+                      </div>
+                  </div>
               </div>
+                                </div>
+
           {% endfor %}
         </ul>
       {% else %}

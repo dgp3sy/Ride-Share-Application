@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from django.test import TestCase
 from rides.models import Ride
+from rides.models import Profile
 # from rides.models import User
 import datetime
 # Create your tests here.
@@ -11,32 +12,13 @@ class TestCases(TestCase):
         Ride.objects.create(origin="Charlottesville", destination="Blacksburg", departure_date="2019-10-10", seats_available=4)
         Ride.objects.create(origin="Blacksburg", destination="Washington DC", departure_date="2019-10-20", seats_available=0)
         Ride.objects.create(origin="Virginia Beach", destination="Norfolk", departure_date="2019-10-30", seats_available=1000)
+        Ride.objects.create(origin="Indianapolis, IN", destination="Denver, CO", departure_date="2019-11-12", seats_available=-1)
 
-        # User.objects.create(first_name="John", last_name="Doe", email="jd3aa@virginia.edu")
-        # User.objects.create(first_name="Jane", last_name="Deer", email="jd4ab@virginia.edu")
-        # User.objects.create(first_name="Mark", last_name="Sherrif", email="mark@virginia.edu")
+        # Profile.objects.create(bio="I am a new user", location="Charlottesville, VA")
+        # Profile.objects.create(bio="I am another user", location="Blacksburg, VA")
+        # Profile.objects.create(bio="I am a third user", location="Indianapolis, IN")
 
-    # def test_user_name(self):
-    #     john = User.objects.get(first_name="John")
-    #     jane = User.objects.get(first_name="Jane")
-    #     mark = User.objects.get(first_name="Mark")
-    #
-    #     self.assertEqual(john.last_name, "Doe")
-    #     self.assertEqual(jane.last_name, "Deer")
-    #     self.assertEqual(mark.last_name, "Sherrif")
-    #
-    #     self.assertEqual(john.first_name, "John")
-    #     self.assertEqual(jane.first_name, "Jane")
-    #     self.assertEqual(mark.first_name, "Mark")
-    #
-    # def test_user_email(self):
-    #     john = User.objects.get(first_name="John")
-    #     jane = User.objects.get(first_name="Jane")
-    #     mark = User.objects.get(first_name="Mark")
-    #
-    #     self.assertEqual(john.email, "jd3aa@virginia.edu")
-    #     self.assertEqual(jane.email, "jd4ab@virginia.edu")
-    #     self.assertEqual(mark.email, "mark@virginia.edu")
+
     def test_destination_cho(self):
         cville = Ride.objects.get(origin="Charlottesville")
         self.assertEqual(cville.destination, "Blacksburg")
@@ -62,6 +44,9 @@ class TestCases(TestCase):
     def test_seats_available_b(self):
         blacksburg = Ride.objects.get(origin="Blacksburg")
         self.assertEqual(blacksburg.seats_available, 0)
+    def test_seats_available_in(self):
+        indy = Ride.objects.get(origin="Indianapolis, IN")
+        self.assertEqual(indy.seats_available, -1)
 
 
 
@@ -127,5 +112,10 @@ class TestCases(TestCase):
         cville = Ride.objects.get(origin="Charlottesville")
         self.assertNotEqual(cville.id, vb757.id)
 
-    def test_dummy_test_case(self):
-        self.assertEqual(1, 1)
+    #
+    # def test_profile_bio(self):
+    #     user1 = User.objects.get(location="Charlottesville, VA")
+    #     user2 = User.objects.get(location="Indianapolis, IN")
+    #     self.assertNotEqual(user1.bio, user2.bio)
+
+

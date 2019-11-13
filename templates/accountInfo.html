@@ -3,15 +3,19 @@
     {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col" s12 m6 offset-m3>
+            <div class="col s12 m6 offset-m3">
                 <H3 class="text-center" style="padding-top:50px; padding-bottom:25px;">Account Information</H3>
             </div>
         </div>
-        <form method="post">
-            {% csrf_token %}
-            {{ user_form.as_p}}
-            {{ profile_form.as_p}}
-            <button type="submit">Save changes</button>
-        </form>
+        <div class="container">
+            <div class="form-group text-center">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ user_form.as_p}}
+                    {{ profile_form.as_p}}
+                    <button type="submit">Save changes</button>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
