@@ -51,12 +51,17 @@
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
                                   <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
-                                  <p class="card-text">The following users are going: {{Ride.passenger_list}}</p>
-                                  {% if user in Ride.passenger_list %}
-                                        <button type="button" class="btn btn-danger" name="leaveRide"  onclick="location.href={% url 'leave_ride' ride_id=Ride.id%}">Leave Ride</button>
-                                  {% endif %}
-                                  {% if Ride.seats_available > 0 %}
-                                        <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' ride_id=Ride.id%}">Join Ride</button>
+                                  <p class="card-text">The following users are going: {{ Ride.passenger_list.all }}
+                                  </p>
+                                  {% if user in Ride.passenger_list.all %}
+                                  <a type="button" class="btn btn-danger" name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>
+<!--                                        <button type="button" class="btn btn-danger" name="leaveRide" onclick="location.href={% url 'join_ride' join=0 ride_id=Ride.id%}">Leave Ride</button>-->
+                                  {% else %}
+                                      {% if Ride.seats_available > 0 %}
+                                                <a type="button" class="btn btn-primary" name="joinRide" href="/{{Ride.id}}/1/">Join Ride</a>
+
+<!--                                            <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' join=1 ride_id=Ride.id%}">Join Ride</button>-->
+                                      {% endif %}
                                   {% endif %}
                       </div>
                       </div>
