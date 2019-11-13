@@ -40,29 +40,29 @@
                 Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
               </button>
               <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
-        <div class="card mb-3">
-                          <div class="row no-gutters">
-                           <div class="col-md-4">
-                              <img src="https://c.stocksy.com/a/8WB500/z9/1235916.jpg?1567070555" class="card-img" alt="...">
-                          </div>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                          <img src="https://c.stocksy.com/a/8WB500/z9/1235916.jpg?1567070555" class="card-img" alt="...">
+                        </div>
                           <div class="col-md-8">
                               <div class="card-body">
                                   <h5 class="card-title">{Ride.User}'s Ride</h5>
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
                                   <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
-                                  <p class="card-text">The following users are going: {{Ride.passenger_list}}</p>
+                                  <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} {{user}} {% endfor %}</p>
                                   {% if user in Ride.passenger_list %}
                                         <button type="button" class="btn btn-danger" name="leaveRide"  onclick="location.href={% url 'leave_ride' ride_id=Ride.id%}">Leave Ride</button>
                                   {% endif %}
                                   {% if Ride.seats_available > 0 %}
                                         <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' ride_id=Ride.id%}">Join Ride</button>
                                   {% endif %}
-                      </div>
-                      </div>
+                              </div>
+                          </div>
                   </div>
+                </div>
               </div>
-                                </div>
 
           {% endfor %}
         </ul>
