@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/leave_ride.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ride_share_103_sharks/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ride_share_103_sharks/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rides/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

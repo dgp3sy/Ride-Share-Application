@@ -9,6 +9,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Ride(models.Model):
+    owner = models.ForeignKey(User, related_name="owner", on_delete=models.SET_NULL, null=True)
     id = models.AutoField(primary_key=True)
     origin = models.CharField(max_length=50, blank=False)
     origin_state = models.CharField(max_length=50, default="N/A", blank=False)
@@ -18,6 +19,12 @@ class Ride(models.Model):
     passenger_list = models.ManyToManyField(User, blank=True)
     asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
+
+    def alter_seats_available_on_join(self):
+        if self.seats_available > 0:
+            self.seats_available -= 1
+    def alter_seats_available_on_leave(self):
+        self.seats_available += 1
 
 
     # seats_available = models.PositiveIntegerField(choices = [(i,i) for i in range(1,6)], validators=[MinValueValidator(0), MaxValueValidator(6)])

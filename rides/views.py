@@ -88,7 +88,7 @@ def Logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-    
+
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'

@@ -31,7 +31,38 @@ class TestCases(TestCase):
         blacksburg = Ride.objects.get(origin="Blacksburg")
         self.assertEqual(blacksburg.destination, "Washington DC")
 
-
+    def test_join_cho(self):
+        cville = Ride.objects.get(origin="Charlottesville")
+        cville.alter_seats_available_on_join()
+        self.assertEqual(cville.seats_available, 3)
+    def test_leave_cho(self):
+        cville = Ride.objects.get(origin="Charlottesville")
+        cville.alter_seats_available_on_leave()
+        self.assertEqual(cville.seats_available, 5)
+    def test_join_b(self):
+        blacksburg = Ride.objects.get(origin="Blacksburg")
+        blacksburg.alter_seats_available_on_join()
+        self.assertEqual(blacksburg.seats_available, 0)
+    def test_leave_b(self):
+        blacksburg = Ride.objects.get(origin="Blacksburg")
+        blacksburg.alter_seats_available_on_leave()
+        self.assertEqual(blacksburg.seats_available, 1)
+    def test_leave_vb(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
+        vb757.alter_seats_available_on_leave()
+        self.assertEqual(vb757.seats_available, 1001)
+    def test_join_vb(self):
+        vb757 = Ride.objects.get(origin="Virginia Beach")
+        vb757.alter_seats_available_on_join()
+        self.assertEqual(vb757.seats_available, 999)
+    def test_leave_ind(self):
+        indy = Ride.objects.get(origin="Indianapolis, IN")
+        indy.alter_seats_available_on_leave()
+        self.assertEqual(indy.seats_available, 0)
+    def test_join_ind(self):
+        indy = Ride.objects.get(origin="Indianapolis, IN")
+        indy.alter_seats_available_on_join()
+        self.assertEqual(indy.seats_available, -1)
 
 
     def test_seats_available_cho(self):
@@ -112,7 +143,7 @@ class TestCases(TestCase):
         cville = Ride.objects.get(origin="Charlottesville")
         self.assertNotEqual(cville.id, vb757.id)
 
-    #
+
     # def test_profile_bio(self):
     #     user1 = User.objects.get(location="Charlottesville, VA")
     #     user2 = User.objects.get(location="Indianapolis, IN")
