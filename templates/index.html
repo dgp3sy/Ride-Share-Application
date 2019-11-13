@@ -47,11 +47,11 @@
                           </div>
                           <div class="col-md-8">
                               <div class="card-body">
-                                  <h5 class="card-title">{Ride.User}'s Ride</h5>
+                                  <h5 class="card-title">{{Ride.owner}}'s Ride</h5>
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
                                   <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
-                                  <p class="card-text">The following users are going: {{ Ride.passenger_list.all }}
+                                  <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} {{user}} {% endfor %}
                                   </p>
                                   {% if user in Ride.passenger_list.all %}
                                   <a type="button" class="btn btn-danger" name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>

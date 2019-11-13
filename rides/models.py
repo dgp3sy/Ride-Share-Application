@@ -19,6 +19,7 @@ class Ride(models.Model):
     passenger_list = models.ManyToManyField(User, blank=True)
     asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
+    owner = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name = 'ride_owner')
 
     def alter_seats_available_on_join(self):
         if self.seats_available > 0:

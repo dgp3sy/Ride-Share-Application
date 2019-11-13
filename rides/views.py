@@ -21,6 +21,7 @@ from django.http import HttpResponseRedirect
 from django.db import transaction
 from .models import Profile
 from .forms import UserForm,ProfileForm
+from http.client import responses
 
 
 class SignUp(generic.CreateView):
@@ -95,6 +96,11 @@ class RideView(CreateView):
     fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'asking_price', 'seats_available')
     def get_success_url(self):
             return ".."
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.owner = self.request.user
+        obj.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 def join_ride(request, **kwargs):
