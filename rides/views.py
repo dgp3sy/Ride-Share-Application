@@ -99,8 +99,20 @@ class RideView(CreateView):
 
 def join_ride(request, **kwargs):
     id_to_join = kwargs['ride_id']
-    new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
-    if new_seats >= 0:
-        Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
-    Ride.objects.get(id=id_to_join).passenger_list.add(request.user)
-    return render(request, 'join_ride.html')
+    is_join = kwargs['join']
+    if is_join == '1':
+        new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
+        if new_seats >= 0:
+            Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+        Ride.objects.get(id=id_to_join).passenger_list.add(request.user)
+        return render(request, 'join_ride.html')
+    else:
+        ride_to_leave = kwargs['ride_id']
+        new_seats = Ride.objects.get(id=ride_to_leave).seats_available + 1
+        Ride.objects.filter(id=ride_to_leave).update(seats_available=new_seats)
+        Ride.objects.get(id=id_to_join).passenger_list.remove(request.user)
+        return render(request, 'leave_ride.html')
+
+
+# def leave_ride(request, **kwargs):
+#
