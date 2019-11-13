@@ -92,7 +92,7 @@ def Logout(request):
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'
-    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'seats_available')
+    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'asking_price', 'seats_available')
     def get_success_url(self):
             return ".."
 
@@ -100,5 +100,7 @@ class RideView(CreateView):
 def join_ride(request, **kwargs):
     id_to_join = kwargs['ride_id']
     new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
-    Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+    if new_seats >= 0:
+        Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+    Ride.objects.get(id=id_to_join).passenger_list.add(request.user)
     return render(request, 'join_ride.html')
