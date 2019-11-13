@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ride_share_103_sharks/static/images/ride_image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staticfiles/images/ride_image.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rides/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/create_ride.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/create_ride.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accountInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accountInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573615264865</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="UI changes to the join ride page">
+      <created>1573660968792</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573660968792</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +148,7 @@
     <MESSAGE value="join ride page UI fixed" />
     <MESSAGE value="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py" />
     <MESSAGE value="added test cases, altered seats_available to constrict between 0-6" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test cases, altered seats_available to constrict between 0-6" />
+    <MESSAGE value="UI changes to the join ride page" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI changes to the join ride page" />
   </component>
 </project>

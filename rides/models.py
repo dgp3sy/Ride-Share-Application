@@ -14,6 +14,8 @@ class Ride(models.Model):
     departure_date = models.DateField(blank=False)
     asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
+    passenger_list = models.ManyToManyField(User)
+
 
     # seats_available = models.PositiveIntegerField(choices = [(i,i) for i in range(1,6)], validators=[MinValueValidator(0), MaxValueValidator(6)])
     def __str__(self):
