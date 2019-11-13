@@ -110,6 +110,7 @@ def join_ride(request, **kwargs):
         ride_to_leave = kwargs['ride_id']
         new_seats = Ride.objects.get(id=ride_to_leave).seats_available + 1
         Ride.objects.filter(id=ride_to_leave).update(seats_available=new_seats)
+        Ride.objects.get(id=id_to_join).passenger_list.remove(request.user)
         return render(request, 'leave_ride.html')
 
 
