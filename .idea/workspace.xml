@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="Merge branch 'join_ride'&#10;&#10;# Conflicts:&#10;#&#9;ride_share_103_sharks/urls.py&#10;#&#9;rides/views.py">
-      <change afterPath="$PROJECT_DIR$/templates/join_ride.html" afterDir="false" />
+    <list default="true" id="f4fb3cc7-6da9-4571-957e-33cf33d004e6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ride_share_103_sharks/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ride_share_103_sharks/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0003_auto_20191014_1847.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0004_auto_20191014_1849.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0005_auto_20191014_2142.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0006_auto_20191021_2204.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/migrations/0007_auto_20191028_0926.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rides/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rides/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

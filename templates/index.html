@@ -7,17 +7,29 @@
     <div class="text-center">
       <form action="{% url 'index' %}" method="get">
         <!-- Search Bar -->
-        <input name="search" type="text" placeholder="Search...">
-        <!-- Search Select -->
-        <select name="search_choice">
-          <option value="destination">Search by Destination</option>
-          <option value="origin">Search by Origin</option>
-        </select>
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-8">
+                      <div class="md-form mt-0">
+                        <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search" style="margin-bottom:10px">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <!-- Search Select -->
+                      <select class="browser-default custom-select" name="search_choice">
+                        <option class="dropdown-item" value="destination">Search by Destination</option>
+                        <option class="dropdown-item" value="origin">Search by Origin</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                    <input type="submit" class="btn btn-success" value="Search" style="width: 50%; margin:10px; padding-left:50px; padding-right:50px;">
+                  </div>
+              </div>
+          </div>
       </form>
-      <!-- Clear Search Button -->
-      <div style="padding-top: 10px">
-        <a class="btn btn-primary" href=".." role="button">Clear Search</a>
-      </div>
+
     </div>
 
     <div class="text-center" style="padding-top:50px;">
