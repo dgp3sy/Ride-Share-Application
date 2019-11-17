@@ -136,7 +136,7 @@
           </div>
 
           <div class="row">
-            <div class="col" style="padding-top:6px">
+            <div class="col-md-4" style="padding-top:6px">
               <div class="form-group">
                 <label class="control-label " for="date">
                   Date*
@@ -144,8 +144,11 @@
                 <input class="form-control" id="departure_date" name="departure_date" placeholder="MM/DD/YYYY" type="text" required>
               </div>
             </div>
-            <div class="col">
+            <div class="col-md-4">
               {{ form.seats_available|as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+              {{ form.asking_price|as_crispy_field }}
             </div>
           </div>
           <button type="submit" class="btn btn-success">Create Ride</button>
@@ -153,7 +156,7 @@
 
     </div>
 </div>
-{% endblock %}
+
 
 
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
@@ -176,3 +179,4 @@
         })
     })
 </script>
+{% endblock %}
