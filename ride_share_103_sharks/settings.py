@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'corsheaders',
     'rides.apps.RidesConfig',
-    'crispy_forms'
-    # 'rides.apps.AccountsConfig',  # Users
+    'crispy_forms',
 
 ]
 
@@ -74,21 +73,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
-# SOCIAL_AUTH_PIPELINE = (
-#     'social.pipeline.social_auth.social_details',
-#     'social.pipeline.social_auth.social_uid',
-#     'social.pipeline.social_auth.auth_allowed',
-#     'social.pipeline.social_auth.social_user',
-#     'social.pipeline.user.get_username',
-#     'social.pipeline.user.create_user',
-#     'social.pipeline.social_auth.associate_user',
-#     'social.pipeline.debug.debug',
-#     'social.pipeline.social_auth.load_extra_data',
-#     'social.pipeline.user.user_details',
-#     'social.pipeline.debug.debug',
-# )
 
 # Redirect after logging in
 LOGIN_REDIRECT_URL = '/'
