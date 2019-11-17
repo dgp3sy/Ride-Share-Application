@@ -19,9 +19,13 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    #ride_list = models.ManyToManyField(Ride)
+    rides = models.ManyToManyField(Ride,  db_index=True)
+    def __str__(self):
+        return '%s' % (self.user)
+    
 
 #was having an issue where first time users couldnt log in OR returning users couldnt log in -- might be fixed?
+#if logging in locally, comment out the "if" condition and login, then uncomment it and it should work fine
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created: #interpret as "new user" 
