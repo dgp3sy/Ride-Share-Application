@@ -33,7 +33,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # login
     path('create_ride/', views.RideView.as_view(), name='create_ride'), #Users can create a ride
     path('', include('social_django.urls', namespace='social')),
-    url(r'(?P<ride_id>\d+)/$', views.join_ride, name='join_ride'),
+    url(r'(?P<ride_id>\d+)/(?P<join>\d+)/$', views.join_ride, name='join_ride'),
+    # url(r'^(?P<ride_id>\d+)/(?P<join>\d+)$', views.leave_ride, name='leave_ride'),
     path('', include('django.contrib.auth.urls')),
 
 ]

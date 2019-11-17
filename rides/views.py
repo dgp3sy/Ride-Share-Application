@@ -21,6 +21,7 @@ from django.http import HttpResponseRedirect
 from django.db import transaction
 from .models import Profile
 from .forms import UserForm,ProfileForm
+from http.client import responses
 
 
 class SignUp(generic.CreateView):
@@ -87,17 +88,23 @@ def Logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-    
+
 class RideView(CreateView):
     model = Ride
     template_name = 'create_ride.html'
-    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'seats_available')
+    fields = ('origin', 'origin_state', 'destination', 'destination_state', 'departure_date', 'asking_price', 'seats_available')
     def get_success_url(self):
             return ".."
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.owner = self.request.user
+        obj.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 def join_ride(request, **kwargs):
     id_to_join = kwargs['ride_id']
+<<<<<<< HEAD
     new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
     Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
 
@@ -106,3 +113,22 @@ def join_ride(request, **kwargs):
     l1.add(r1)
 
     return render(request, 'join_ride.html')
+=======
+    is_join = kwargs['join']
+    if is_join == '1':
+        new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
+        if new_seats >= 0:
+            Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+        Ride.objects.get(id=id_to_join).passenger_list.add(request.user)
+        return render(request, 'join_ride.html')
+    else:
+        ride_to_leave = kwargs['ride_id']
+        new_seats = Ride.objects.get(id=ride_to_leave).seats_available + 1
+        Ride.objects.filter(id=ride_to_leave).update(seats_available=new_seats)
+        Ride.objects.get(id=id_to_join).passenger_list.remove(request.user)
+        return render(request, 'leave_ride.html')
+
+
+# def leave_ride(request, **kwargs):
+#
+>>>>>>> c979e96e1d4fc423dfef724483e922c601ae6b76
