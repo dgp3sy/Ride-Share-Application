@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+class Profile(models.Model):
+    user = models.OneToOneField(User,unique=True, null=False, db_index=True, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    #ride_list = models.ManyToManyField(Ride)
+
 class Ride(models.Model):
     origin = models.CharField(max_length=50, blank=False)
     origin_state = models.CharField(max_length=50, default="N/A", blank=False)
@@ -11,15 +18,9 @@ class Ride(models.Model):
     destination_state = models.CharField(max_length=50, default="N/A", blank=False)
     departure_date = models.DateField(blank=False)
     seats_available = models.IntegerField(choices = [(i,i) for i in range(1,6)])
+    driver = user.username
     def __str__(self):
         return '%s %s %s' % (self.origin, self.destination, self.departure_date)
-
-class Profile(models.Model):
-    user = models.OneToOneField(User,unique=True, null=False, db_index=True, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-    #ride_list = models.ManyToManyField(Ride)
 
 #was having an issue where first time users couldnt log in OR returning users couldnt log in -- might be fixed?
 @receiver(post_save, sender=User)
