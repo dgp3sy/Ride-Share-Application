@@ -1,39 +1,100 @@
 {% extends 'base.html' %}
 
-    {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m6 offset-m3">
-                <H3 class="text-center" style="padding-top:50px; padding-bottom:25px;">Account Information</H3>
-            </div>
-        </div>
-        <div class="container">
-            <div class="form-group text-center">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ user_form.as_p}}
-                    {{ profile_form.as_p}}
-                    <button type="submit">Save changes</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="text-center" style="padding-top:50px;">
-      {% if rides %}
-        <ul class="list-group">
-          {% for Ride in rides %}
-              <button type="button" class="list-group-item list-group-item-action">
-                Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
-              </button>
-              <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
-                This ride is leaving from {{Ride.origin}}, {{Ride.origin_state}}. 
+  {% block content %}
+
+    <div class="d-md-flex h-md-100 align-items-top">
+
+      <!-- First Half -->
+      
+      <div class="col-md-6 p-0 bg-indigo h-md-100">
+          <div class="text-black d-md-flex align-items-left h-100 p-5 text-center justify-content-center">
+              <div class="logoarea pt-5 pb-5">
+                  <!-- first  half content here-->
+                  <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 offset-m3">
+                            <h2>Account Information</h2>
+                        </div>
+                    </div>
+                    {% load crispy_forms_tags %}
+                    <div class="container">
+                        <div class="form-group text-left">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ user_form|crispy}}
+                                {{ profile_form|crispy}}
+                                <button type="submit">Save changes</button>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
               </div>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>You have not joined any rides.</p>
-      {% endif %}
+          </div>
+      </div>
+      
+      <!-- Second Half -->
+      
+      <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+          <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+              <!-- Second half content here -->
+              <div class="text-center" style="padding-top:50px;">
+                <h2> List of Joined Rides: </h2>
+                {% if user.profile.rides %}
+                  <ul class="list-group">
+                    {% for Ride in user.profile.rides.all %}
+                        <button type="button" class="list-group-item list-group-item-action">
+                          Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
+                        </button>
+                        <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
+                            <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                     <div class="col-md-4">
+                                        <img src="https://c.stocksy.com/a/8WB500/z9/1235916.jpg?1567070555" class="card-img" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{Ride.owner}}'s Ride</h5>
+                                            <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
+                                            <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
+                                            <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
+                                            <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} {{user.first_name}} {{user.last_name}} {% endfor %}
+                                            </p>
+                                            <!--<a type="button" class="btn btn-danger" name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a> -->
+                                          </div>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <p>You have not joined any Rides</p>
+                {% endif %}
+              </div>
+          </div>
+      </div>
+          
     </div>
+
+    
+    
+    <script>
+      var coll = document.getElementsByClassName("list-group-item list-group-item-action");
+      var i;
+    
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+      </script>
+
     {% endblock %}
 
 

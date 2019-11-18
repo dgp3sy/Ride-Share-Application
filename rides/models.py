@@ -34,10 +34,10 @@ class Ride(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User,unique=True, null=False, db_index=True, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=250, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    rides = models.ManyToManyField(Ride,  db_index=True)
+    rides = models.ManyToManyField(Ride,  db_index=True, blank=True)
     def __str__(self):
         return '%s' % (self.user)
     
