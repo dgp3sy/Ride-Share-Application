@@ -46,7 +46,7 @@ class Profile(models.Model):
 #if logging in locally, comment out the "if" condition and login, then uncomment it and it should work fine
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    if created: #interpret as "new user" 
+    if kwargs.get('created', False):#created: #interpret as "new user" 
         Profile.objects.create(user=instance)
     
 @receiver(post_save, sender=User)
