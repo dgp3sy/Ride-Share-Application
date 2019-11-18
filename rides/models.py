@@ -48,10 +48,12 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if kwargs.get('created', False):#created: #interpret as "new user" 
         Profile.objects.create(user=instance)
-    
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+
+post_save.connect(create_user_profile, sender=User)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
 # User-to-user messaging feature, url:https://stackoverflow.com/questions/32687461/how-to-create-a-user-to-user-message-system-using-django
 # class Message(models.Model):
