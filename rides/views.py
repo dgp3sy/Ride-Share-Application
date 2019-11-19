@@ -123,3 +123,10 @@ def join_ride(request, **kwargs):
         request.user.profile.rides.remove(Ride.objects.get(id=ride_to_leave))
         return render(request, 'leave_ride.html')
 
+
+def delete_ride(request, **kwargs):
+    id_to_del = kwargs['ride_id']
+    Ride.objects.filter(id=id_to_del).delete()
+    
+    return render(request, 'del_ride.html')
+
