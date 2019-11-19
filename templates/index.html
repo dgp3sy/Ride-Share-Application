@@ -68,7 +68,9 @@
                                       
                                       {% endif %}
                                     {% endif %}
-                                    <a type="button" class="btn btn-danger" name="deleteRide" href="/{{Ride.id}}">Delete</a>
+                                    {% if Ride.owner == user %}
+                                      <a type="button" class="btn btn-danger" name="deleteRide" href="/{{Ride.id}}">Delete</a>
+                                    {% endif %}
                                   {% endif %}
                       </div>
                       </div>
