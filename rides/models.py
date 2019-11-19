@@ -9,13 +9,6 @@ from datetime import date
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User,unique=True, null=False, db_index=True, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=250, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-    #ride_list = models.ManyToManyField(Ride)
-
 class Ride(models.Model):
     owner = models.ForeignKey(User, related_name="owner", on_delete=models.SET_NULL, null=True)
     id = models.AutoField(primary_key=True)
