@@ -141,7 +141,7 @@
                 <label class="control-label " for="date">
                   Date*
                 </label>
-                <input class="form-control" id="departure_date" name="departure_date" placeholder="MM/DD/YYYY" type="text" required>
+                <input class="form-control" id="departure_date" name="departure_date" placeholder="MM/DD/YYYY" type="text" required autocomplete="off">
               </div>
             </div>
             <div class="col-md-4">
@@ -176,6 +176,7 @@
             container: container,
             todayHighlight: true,
             autoclose: true,
+            startDate: "+0d",
         })
     })
 </script>
