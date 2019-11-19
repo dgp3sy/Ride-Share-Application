@@ -14,3 +14,6 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('bio','location','birth_date')
+        # widgets = {
+        # 	'bio': forms.Textarea(attrs={'class':'bio', 'label':''})
+        # }

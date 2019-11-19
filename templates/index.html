@@ -36,8 +36,9 @@
       {% if ride_list %}
         <ul class="list-group">
           {% for Ride in ride_list %}
+              {% if Ride.has_not_passed %}
               <button type="button" class="list-group-item list-group-item-action">
-                Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
+                {{Ride.origin}} to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
               </button>
               <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
                   <div class="card mb-3">
@@ -66,10 +67,9 @@
                       </div>
                       </div>
                   </div>
-
               </div>
-                                </div>
-
+            </div>
+            {% endif %}
           {% endfor %}
         </ul>
       {% else %}

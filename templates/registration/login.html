@@ -45,7 +45,7 @@
         <div class="jumbotron text-center ">
     
         {% if user.is_authenticated %}
-          <p>Logged as {{ user.username }}</p>
+          <p>Logged in as {{ user.username }}</p>
         <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">

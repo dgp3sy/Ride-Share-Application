@@ -4,9 +4,17 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
+from datetime import date
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,unique=True, null=False, db_index=True, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=250, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    #ride_list = models.ManyToManyField(Ride)
 
 class Ride(models.Model):
     owner = models.ForeignKey(User, related_name="owner", on_delete=models.SET_NULL, null=True)
@@ -20,6 +28,9 @@ class Ride(models.Model):
     asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
     owner = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name = 'ride_owner')
+    @property
+    def has_not_passed(self):
+        return self.departure_date >= date.today()
 
     def alter_seats_available_on_join(self):
         if self.seats_available > 0:
