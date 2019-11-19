@@ -33,11 +33,11 @@ class Ride(models.Model):
         return '%s %s %s' % (self.origin, self.destination, self.departure_date)
 
 class Profile(models.Model):
-    user = models.OneToOneField(User,unique=True, null=False, db_index=True, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=250, blank=True)
-    location = models.CharField(max_length=30, blank=True)
+    user = models.OneToOneField(User,unique=True, on_delete=models.CASCADE)#, null=False, db_index=True, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=250, blank=True, null=True)
+    location = models.CharField(max_length=30, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
-    rides = models.ManyToManyField(Ride,  db_index=True, blank=True)
+    rides = models.ManyToManyField(Ride, db_index=True, blank=True)
     def __str__(self):
         return '%s' % (self.user)
     
@@ -46,10 +46,21 @@ class Profile(models.Model):
 #if logging in locally, comment out the "if" condition and login, then uncomment it and it should work fine
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    if kwargs.get('created', False):#created: #interpret as "new user" 
+    if created:
         Profile.objects.create(user=instance)
 
-post_save.connect(create_user_profile, sender=User)
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if kwargs.get('created', False) and not kwargs.get('raw', False):
+#         Profile.objects.create(user=instance)
+#instance.profile.save()
+
+#post_save.connect(create_user_profile, sender=User)
+#error with profile page creation ^^this allows login but 
 
 # @receiver(post_save, sender=User)
 # def save_user_profile(sender, instance, **kwargs):

@@ -67,9 +67,6 @@ class IndexView(generic.ListView):
 @transaction.atomic
 def Account_Info(request):
 
-    template_name = 'accountInfo.html'
-    context_object_name = 'rides'
-
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
