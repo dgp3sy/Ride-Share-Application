@@ -74,7 +74,7 @@ def Account_Info(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('myaccount')
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
@@ -100,28 +100,34 @@ class RideView(CreateView):
         obj = form.save(commit=False)
         obj.owner = self.request.user
         obj.save()
+        self.request.user.created_rides.add(obj)
+
         return HttpResponseRedirect(self.get_success_url())
 
 
 def join_ride(request, **kwargs):
     id_to_join = kwargs['ride_id']
     is_join = kwargs['join']
-    #id_to_add = kwargs['profile_id']
     if is_join == '1':
-        new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
-        if new_seats >= 0:
-            Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
-        Ride.objects.get(id=id_to_join).passenger_list.add(request.user)
-        request.user.profile.rides.add(Ride.objects.get(id=id_to_join))
-        #Profile.objects.get(id=id_to_add).rides.add(Ride.objects.get(id=id_to_join))
-        return render(request, 'join_ride.html')
+        try:
+            new_seats = Ride.objects.get(id=id_to_join).seats_available - 1
+            if new_seats >= 0:
+                Ride.objects.filter(id=id_to_join).update(seats_available=new_seats)
+            Ride.objects.get(id=id_to_join).passenger_list.add(request.user)
+            request.user.profile.rides.add(Ride.objects.get(id=id_to_join))
+            return render(request, 'join_ride.html')
+        except:
+            return render(request, 'ride_not_exist.html')
     else:
-        ride_to_leave = kwargs['ride_id']
-        new_seats = Ride.objects.get(id=ride_to_leave).seats_available + 1
-        Ride.objects.filter(id=ride_to_leave).update(seats_available=new_seats)
-        Ride.objects.get(id=id_to_join).passenger_list.remove(request.user)
-        request.user.profile.rides.remove(Ride.objects.get(id=ride_to_leave))
-        return render(request, 'leave_ride.html')
+        try:
+            ride_to_leave = kwargs['ride_id']
+            new_seats = Ride.objects.get(id=ride_to_leave).seats_available + 1
+            Ride.objects.filter(id=ride_to_leave).update(seats_available=new_seats)
+            Ride.objects.get(id=id_to_join).passenger_list.remove(request.user)
+            request.user.profile.rides.remove(Ride.objects.get(id=ride_to_leave))
+            return render(request, 'leave_ride.html')
+        except:
+            return render(request, 'ride_not_exist.html')
 
 
 def delete_ride(request, **kwargs):

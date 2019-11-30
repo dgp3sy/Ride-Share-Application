@@ -29,7 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IndexView.as_view(), name='index'),  # index
     path('logout/', views.Logout),
-    path('accounts/myaccount', views.Account_Info),#, name='accountInfo'),
+    path('accounts/myaccount', views.Account_Info, name='accountInfo'),
     path('accounts/', include('django.contrib.auth.urls')),  # login
     path('create_ride/', views.RideView.as_view(), name='create_ride'), #Users can create a ride
     path('', include('social_django.urls', namespace='social')),

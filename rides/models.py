@@ -20,7 +20,9 @@ class Ride(models.Model):
     passenger_list = models.ManyToManyField(User, blank=True)
     asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
-    owner = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name = 'ride_owner')
+    created_rides = models.ForeignKey(User, on_delete=models.CASCADE, related_name="created_rides", null=True)
+
+    #owner = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name = 'ride_owner')
     @property
     def has_not_passed(self):
         return self.departure_date >= date.today()
@@ -57,18 +59,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if kwargs.get('created', False) and not kwargs.get('raw', False):
-#         Profile.objects.create(user=instance)
-#instance.profile.save()
-
-#post_save.connect(create_user_profile, sender=User)
-#error with profile page creation ^^this allows login but 
-
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
 
 # User-to-user messaging feature, url:https://stackoverflow.com/questions/32687461/how-to-create-a-user-to-user-message-system-using-django
 # class Message(models.Model):
