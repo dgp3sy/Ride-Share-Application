@@ -22,11 +22,9 @@ class Ride(models.Model):
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
     created_rides = models.ForeignKey(User, on_delete=models.CASCADE, related_name="created_rides", null=True)
 
-    #owner = models.ForeignKey(User, models.SET_NULL, blank=True, null=True, related_name = 'ride_owner')
     @property
     def has_not_passed(self):
         return self.departure_date >= date.today()
-
     def alter_seats_available_on_join(self):
         if self.seats_available > 0:
             self.seats_available -= 1
@@ -38,6 +36,7 @@ class Ride(models.Model):
     def __str__(self):
         return '%s %s %s' % (self.origin, self.destination, self.departure_date)
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User,unique=True, on_delete=models.CASCADE)#, null=False, db_index=True, on_delete=models.CASCADE)
     bio = models.TextField(max_length=250, blank=True, null=True)
@@ -48,7 +47,8 @@ class Profile(models.Model):
     car = models.CharField(max_length = 30, blank=True,null=True)
     def __str__(self):
         return '%s' % (self.user)
-    
+
+
 
 #was having an issue where first time users couldnt log in OR returning users couldnt log in -- might be fixed?
 #if logging in locally, comment out the "if" condition and login, then uncomment it and it should work fine

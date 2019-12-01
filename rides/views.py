@@ -55,6 +55,11 @@ class IndexView(generic.ListView):
                     Q(destination__icontains=query) | Q(destination_state__icontains=query)
                 )
                 return object_list
+            if(select == "departure_date"):
+                object_list = Ride.objects.filter(
+                    Q(departure_date__icontains=query)
+                )
+                return object_list
 
     def join_ride(self, request):
         if request.GET.get('joinRide'):
