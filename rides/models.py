@@ -30,7 +30,8 @@ class Ride(models.Model):
             self.seats_available -= 1
     def alter_seats_available_on_leave(self):
         self.seats_available += 1
-
+    def set_price(self, price):
+        self.asking_price = price
 
     # seats_available = models.PositiveIntegerField(choices = [(i,i) for i in range(1,6)], validators=[MinValueValidator(0), MaxValueValidator(6)])
     def __str__(self):
