@@ -39,9 +39,9 @@
               <!-- Second half content here -->
               <div class="text-center" style="padding-top:50px;">
                 <h2> List of Joined Rides: </h2>
-                {% if user.profile.rides.all.count > 0 %}
+                {% if user.profile.rides.has_not_passed.count > 0 %}
                   <ul class="list-group">
-                    {% for Ride in user.profile.rides.all %}
+                    {% for Ride in user.profile.rides.has_not_passed %}
                         <button type="button" class="list-group-item list-group-item-action">
                           Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
                         </button>
