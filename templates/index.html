@@ -17,14 +17,18 @@
                   <div class="col-sm-4">
                     <!-- Search Select -->
                       <select class="browser-default custom-select" name="search_choice">
-                        <option class="dropdown-item" value="destination">Search by Destination</option>
-                        <option class="dropdown-item" value="origin">Search by Origin</option>
+                        <option class="dropdown-item" value="destination">Where do you want to go?</option>
+                        <option class="dropdown-item" value="origin">Where do you want to leave from?</option>
+                        <option calss="dropdown-item" value='departure_date'>When do you want to leave? (YYYY-MM-DD)</option>
                       </select>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-sm-12">
-                    <input type="submit" class="btn btn-success" value="Search" style="width: 50%; margin:10px; padding-left:50px; padding-right:50px;">
+                  <div class="col-sm-8">
+                    <input type="submit" class="btn btn-success" value="Search" style="width: 100%;">
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="submit" class="btn btn-success" value="Clear Search" onclick="location.href='{% url 'index' %}'" style="width: 100%;">
                   </div>
               </div>
           </div>
@@ -57,11 +61,11 @@
                                   {% if user.is_authenticated %}
                                     {% if Ride.owner != user %}
                                       {% if user in Ride.passenger_list.all %}
-                                      <a type="button" class="btn btn-danger" name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>
+                                      <a type="button" class="btn btn-danger" style='-webkit-appearance: none!important;' name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>
     <!--                                        <button type="button" class="btn btn-danger" name="leaveRide" onclick="location.href={% url 'join_ride' join=0 ride_id=Ride.id%}">Leave Ride</button>-->
                                       {% else %}
                                           {% if Ride.seats_available > 0 %}
-                                                    <a type="button" class="btn btn-primary" name="joinRide" href="/{{Ride.id}}/1/">Join Ride</a>
+                                                    <a type="button" class="btn btn-primary" style='-webkit-appearance: none!important;' name="joinRide" href="/{{Ride.id}}/1/">Join Ride</a>
 
     <!--                                            <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' join=1 ride_id=Ride.id%}">Join Ride</button>-->
                                           {% endif %}
@@ -69,7 +73,7 @@
                                       {% endif %}
                                     {% endif %}
                                     {% if Ride.owner == user %}
-                                      <a type="button" class="btn btn-danger" name="deleteRide" href="/{{Ride.id}}">Delete</a>
+                                      <a type="button" class="btn btn-danger" style='-webkit-appearance: none!important;' name="deleteRide" href="/{{Ride.id}}">Delete</a>
                                     {% endif %}
                                   {% endif %}
                       </div>
