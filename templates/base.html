@@ -32,24 +32,30 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
+            
                 {% block navbar %}
                 {% if user.is_authenticated %}
                   <li class="nav-item">
                       <a class="nav-link" href="/create_ride/">Create Rides</a>
                   </li>
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{user.first_name}}
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/accounts/login/">Account</a></li>
-                      <li><a href="/accounts/login/">Logout</a></li>
-                    </ul>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/accounts/myaccount">My Account</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="/accounts/login/">My Account</a>
+                      <a class="nav-link" href="/accounts/login/">{{user.first_name}}</a>
                   </li>
                   
+<!--                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ user.first_name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/accounts/myaccount/">My Account</a>
+                      <a class="dropdown-item" href="/accounts/login/">Logout</a>
+                    </div>
+                  </li> -->
+                  
+
                 {% else %}
                   <li class="nav-item">
                       <a class="nav-link" href="/accounts/login/">Create Rides</a>
@@ -78,23 +84,5 @@
     Copyright © 2019 | Dan Perkins, Will Lampert, Dong Lee, Eric Armstrong | University of Virginia | All Rights Reserved
   </div>
 </div>
-
-<!-- <script>
-var coll = document.getElementsByClassName("account-action");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}
-</script> -->
-
 </html>
 
