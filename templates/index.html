@@ -65,7 +65,7 @@
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
                                   <p class="card-text">The driver is asking for ${{ Ride.asking_price }} from each rider</p>
-                                  <p class="card-text">The following users are going: <br> {% for person in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{Ride.owner.first_name}}{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}
+                                  <p class="card-text">The following users are going: <br> {% for person in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}
                                   </p>
                                   {% if user.is_authenticated %}
                                     {% if Ride.owner != user %}
