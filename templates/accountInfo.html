@@ -59,6 +59,7 @@
                                             <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
                                             <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} {{user.first_name}} {{user.last_name}} {% endfor %}
                                             </p>
+                                            <a type="button" class="btn btn-primary" style='-webkit-appearance: none!important;' href="/accounts/{{ Ride.owner.username }}/">View Profile</a>
                                             <a type="button" class="btn btn-danger" name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>
 
                                           </div>
