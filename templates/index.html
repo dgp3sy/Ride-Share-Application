@@ -75,7 +75,7 @@
     <!--                                        <button type="button" class="btn btn-danger" name="leaveRide" onclick="location.href={% url 'join_ride' join=0 ride_id=Ride.id%}">Leave Ride</button>-->
                                       {% else %}
                                           {% if Ride.seats_available > 0 %}
-                                                    <a type="button" class="btn btn-primary" href="/accounts/{{ Ride.owner.username }}/">View Profile</a>
+                                                    <a type="button" class="btn btn-primary" style='-webkit-appearance: none!important;' href="/accounts/{{ Ride.owner.username }}/">View Profile</a>
                                                     <a type="button" class="btn btn-primary" style='-webkit-appearance: none!important;' name="joinRide" href="/{{Ride.id}}/1/">Join Ride</a>
 
     <!--                                            <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' join=1 ride_id=Ride.id%}">Join Ride</button>-->
