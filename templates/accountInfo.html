@@ -55,11 +55,11 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
                                             <p class="card-title">Email: {{Ride.owner.email}}</p>
-                                            {% if Ride.owner.profilephone_num %}
+                                            {% if Ride.owner.profile.phone_num %}
                                             <p class="card-title">Phone Number: {{Ride.owner.profile.phone_num}}</p>
                                             {% endif %}
                                             <p class="card-text">This ride is leaving <b>from {{Ride.origin}}, {{Ride.origin_state}}</b> and going <b>to {{Ride.destination}}, {{Ride.destination_state}}</b></p>
-                                            <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if user.profile.car %}in {{Ride.owner.first_name}} {{Ride.owner.last_name}}'s <b>{{user.profile.car}}</b> {% endif %}</p>
+                                            <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if Ride.owner.profile.car %}in {{Ride.owner.first_name}} {{Ride.owner.last_name}}'s <b>{{Ride.owner.profile.car}}</b> {% endif %}</p>
                                             <p class="card-text">The driver is asking for <b>${{ Ride.asking_price }} from each rider</b></p>
                                             <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}</p>
                                             <a type="button" class="btn btn-primary" href="/accounts/{{ Ride.owner.username }}/">Driver Profile</a>
@@ -97,7 +97,7 @@
                                             <p class="card-title">Your Phone Number: {{user.profile.phone_num}}</p>
                                             {% endif %}
                                             <p class="card-text">You're driving <b>from {{Ride.origin}}, {{Ride.origin_state}} to {{Ride.destination}}, {{Ride.destination_state}}</b></p>
-                                            <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if user.profile.car %}in your <b>{{user.profile.car}}</b> {% endif %}</p>
+                                            <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if Ride.owner.profile.car %}in your <b>{{Ride.owner.profile.car}}</b> {% endif %}</p>
                                             <p class="card-text">You're asking for <b>${{ Ride.asking_price }} from each rider</b></p>
                                             <p class="card-text">The following users are going: <br> {% for person in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}
                                             </p>
