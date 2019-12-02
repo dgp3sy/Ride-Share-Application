@@ -62,14 +62,15 @@
                                   <p class="card-title">Phone Number: {{user.profile.phone_num}}</p>
                                   {% endif %}
                                   {% endif %}
-                                  <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
-                                  <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
-                                  <p class="card-text">The driver is asking for ${{ Ride.asking_price }} from each rider</p>
+                                  <p class="card-text">This ride is leaving <b>from {{Ride.origin}}, {{Ride.origin_state}}</b> and going <b>to {{Ride.destination}}, {{Ride.destination_state}}</b></p>
+                                  <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if user.profile.car %}in {{Ride.owner.first_name}} {{Ride.owner.last_name}}'s <b>{{user.profile.car}}</b> {% endif %}</p>
+                                  <p class="card-text">The driver is asking for <b>${{ Ride.asking_price }}</b> from each rider</p>
                                   <p class="card-text">The following users are going: <br> {% for person in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}
                                   </p>
                                   {% if user.is_authenticated %}
                                     {% if Ride.owner != user %}
                                       {% if user in Ride.passenger_list.all %}
+                                      <a type="button" class="btn btn-primary" href="/accounts/{{ Ride.owner.username }}/">View Profile</a>
                                       <a type="button" class="btn btn-danger" style='-webkit-appearance: none!important;' name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>
     <!--                                        <button type="button" class="btn btn-danger" name="leaveRide" onclick="location.href={% url 'join_ride' join=0 ride_id=Ride.id%}">Leave Ride</button>-->
                                       {% else %}
