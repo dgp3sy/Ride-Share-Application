@@ -10,24 +10,19 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/create_ride/">Create Rides</a>
-            </li>
               {% block content1 %}
               {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/accounts/myaccount">My Account</a>
+                  <a class="nav-link" href="/create_ride/">Create Rides</a>
                 </li>
-              {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/accounts/login/">My Account</a>
+                  <a class="nav-link" href="/accounts/myaccount">My Account</a>
                 </li>
               {% endif %}
               {% endblock %}
-              
+
               {% block content %}
               {% if user.is_authenticated %}
-              <!-- Change this to become a collapsible Navbar -->
                   <li class="nav-item">
                       <a class="nav-link" href="/accounts/login/">{{user.first_name}}</a>
                   </li>
