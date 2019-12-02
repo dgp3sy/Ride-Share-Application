@@ -43,7 +43,7 @@
                   <ul class="list-group">
                     {% for Ride in user.profile.rides.all %}
                         <button type="button" class="list-group-item list-group-item-action">
-                          Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
+                          Ride from {{Ride.origin}} to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
                         </button>
                         <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
                             <div class="card mb-3">
@@ -54,14 +54,16 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
-                                            <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
-                                            <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
-                                            <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
-                                            <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} {{user.first_name}} {{user.last_name}} {% endfor %}
-                                            </p>
-                                            <a type="button" class="btn btn-primary" style='-webkit-appearance: none!important;' href="/accounts/{{ Ride.owner.username }}/">View Profile</a>
+                                            <p class="card-title">Email: {{Ride.owner.email}}</p>
+                                            {% if Ride.owner.profilephone_num %}
+                                            <p class="card-title">Phone Number: {{Ride.owner.profile.phone_num}}</p>
+                                            {% endif %}
+                                            <p class="card-text">This ride is leaving <b>from {{Ride.origin}}, {{Ride.origin_state}}</b> and going <b>to {{Ride.destination}}, {{Ride.destination_state}}</b></p>
+                                            <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if user.profile.car %}in {{Ride.owner.first_name}} {{Ride.owner.last_name}}'s <b>{{user.profile.car}}</b> {% endif %}</p>
+                                            <p class="card-text">The driver is asking for <b>${{ Ride.asking_price }} from each rider</b></p>
+                                            <p class="card-text">The following users are going: {% for user in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}</p>
+                                            <a type="button" class="btn btn-primary" href="/accounts/{{ Ride.owner.username }}/">Driver Profile</a>
                                             <a type="button" class="btn btn-danger" name="joinRide" href="/{{Ride.id}}/0/">Leave Ride</a>
-
                                           </div>
                                         </div>
                                      </div>
@@ -79,7 +81,7 @@
                     {% if user.created_rides.all.count >= 1 %}
                     {% for Ride in user.created_rides.all %}
                         <button type="button" class="list-group-item list-group-item-action">
-                          Going to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
+                         Drive from {{Ride.origin}} to {{Ride.destination}}, {{Ride.destination_state}} on {{Ride.departure_date}}
                         </button>
                         <div class="content" style="display: none; padding-top:20px; padding-bottom: 20px">
                             <div class="card mb-3">
@@ -89,11 +91,15 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
-                                            <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
-                                            <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
-                                            <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
-                                            <p class="card-text">The following users are going: {% for person in Ride.passenger_list.all %} {{person.first_name}} {{person.last_name}} {% endfor %}
+                                            <h5 class="card-title">Your Drive</h5>
+                                            <p class="card-title">Your Email: {{Ride.owner.email}}</p>
+                                            {% if user.profile.phone_num %}
+                                            <p class="card-title">Your Phone Number: {{user.profile.phone_num}}</p>
+                                            {% endif %}
+                                            <p class="card-text">You're driving <b>from {{Ride.origin}}, {{Ride.origin_state}} to {{Ride.destination}}, {{Ride.destination_state}}</b></p>
+                                            <p class="card-text">There are currently <b>{{Ride.seats_available}} seat(s) available</b> {% if user.profile.car %}in your <b>{{user.profile.car}}</b> {% endif %}</p>
+                                            <p class="card-text">You're asking for <b>${{ Ride.asking_price }} from each rider</b></p>
+                                            <p class="card-text">The following users are going: <br> {% for person in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}
                                             </p>
                                             <a type="button" class="btn btn-danger" name="deleteRide" href="/{{Ride.id}}">Delete</a>
                                           </div>
