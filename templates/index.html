@@ -53,6 +53,8 @@
                           <div class="col-md-8">
                               <div class="card-body">
                                   <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
+                                  <p class="card-title">Email: {{Ride.owner.email}}</p>
+                                  <p class="card-title">Phone Number: {{user.profile.phone_number}}</p>
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
                                   <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>

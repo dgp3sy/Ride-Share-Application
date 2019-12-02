@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from datetime import date
+from decimal import Decimal
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -18,7 +19,7 @@ class Ride(models.Model):
     destination_state = models.CharField(max_length=50, default="N/A", blank=False)
     departure_date = models.DateField(blank=False)
     passenger_list = models.ManyToManyField(User, blank=True)
-    asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5)
+    asking_price = models.DecimalField(default=0.00, decimal_places=2, max_digits=5, validators=[MinValueValidator(Decimal('0.01'))])
     seats_available = models.IntegerField(default=0, choices = [(i,i) for i in range(1,6)])
     created_rides = models.ForeignKey(User, on_delete=models.CASCADE, related_name="created_rides", null=True)
 
@@ -48,6 +49,9 @@ class Profile(models.Model):
     car = models.CharField(max_length = 30, blank=True,null=True)
     def __str__(self):
         return '%s' % (self.user)
+    # @property
+    # def phone_number_display(self):
+    #     return "$%s" % self.phone_number
 
 
 
@@ -61,11 +65,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-
-
-# User-to-user messaging feature, url:https://stackoverflow.com/questions/32687461/how-to-create-a-user-to-user-message-system-using-django
-# class Message(models.Model):
-#     sender = models.ForeignKey(User, related_name="sender")
-#     receiver = models.ForeignKey(User, related_name="receiver")
-#     msg_content = models.CharField(max_length=640)
-#     timestamp = models.DateTimeField(default=datetime.now)
