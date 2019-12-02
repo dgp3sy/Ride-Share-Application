@@ -52,13 +52,20 @@
                           </div>
                           <div class="col-md-8">
                               <div class="card-body">
-                                  <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
+                                  <h5 class="card-title">
+                                    <!-- <a href="/accounts/{{ Ride.owner.username }}/" style="text-decoration: none;">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s</a> Ride -->
+                                  {{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride
+                                  </h5>
+                                  {% if user.is_authenticated %}                 
                                   <p class="card-title">Email: {{Ride.owner.email}}</p>
-                                  <p class="card-title">Phone Number: {{user.profile.phone_number}}</p>
+                                  {% if user.profile.phone_num %}
+                                  <p class="card-title">Phone Number: {{user.profile.phone_num}}</p>
+                                  {% endif %}
+                                  {% endif %}
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
-                                  <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
-                                  <p class="card-text">The following users are going: {% for person in Ride.passenger_list.all %} {{person.first_name}} {{person.last_name}} {% endfor %}
+                                  <p class="card-text">The driver is asking for ${{ Ride.asking_price }} from each rider</p>
+                                  <p class="card-text">The following users are going: <br> {% for person in Ride.passenger_list.all %} <a href="/accounts/{{ person.username }}/" style="text-decoration: none;">{{Ride.owner.first_name}}{{person.first_name}} {{person.last_name}}</a> <br> {% endfor %}
                                   </p>
                                   {% if user.is_authenticated %}
                                     {% if Ride.owner != user %}
@@ -67,6 +74,7 @@
     <!--                                        <button type="button" class="btn btn-danger" name="leaveRide" onclick="location.href={% url 'join_ride' join=0 ride_id=Ride.id%}">Leave Ride</button>-->
                                       {% else %}
                                           {% if Ride.seats_available > 0 %}
+                                                    <a type="button" class="btn btn-primary" href="/accounts/{{ Ride.owner.username }}/">View Profile</a>
                                                     <a type="button" class="btn btn-primary" style='-webkit-appearance: none!important;' name="joinRide" href="/{{Ride.id}}/1/">Join Ride</a>
 
     <!--                                            <button type="button" class="btn btn-primary" name="joinRide"  onclick="location.href={% url 'join_ride' join=1 ride_id=Ride.id%}">Join Ride</button>-->
@@ -75,6 +83,7 @@
                                       {% endif %}
                                     {% endif %}
                                     {% if Ride.owner == user %}
+<!--                                       <a type="button" class="btn btn-primary" href="/accounts/{{ Ride.owner.username }}/">View Profile</a> -->
                                       <a type="button" class="btn btn-danger" style='-webkit-appearance: none!important;' name="deleteRide" href="/{{Ride.id}}">Delete</a>
                                     {% endif %}
                                   {% endif %}
@@ -109,5 +118,3 @@
   }
   </script>
 {% endblock %}
-
-

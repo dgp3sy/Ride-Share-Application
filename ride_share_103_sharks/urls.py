@@ -36,6 +36,6 @@ urlpatterns = [
     url(r'(?P<ride_id>\d+)/(?P<join>\d+)/$', views.join_ride, name='join_ride'),
     url(r'(?P<ride_id>\d+)/$', views.delete_ride, name='delete_ride'),
     # url(r'^(?P<ride_id>\d+)/(?P<join>\d+)$', views.leave_ride, name='leave_ride'),
+    path('accounts/<str:user_id>/', views.seeProfile, name='seeProfile'),
     path('', include('django.contrib.auth.urls')),
-
 ]

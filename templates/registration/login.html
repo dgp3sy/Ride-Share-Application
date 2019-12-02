@@ -13,7 +13,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/create_ride/">Create Rides</a>
             </li>
-
               {% block content1 %}
               {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -25,11 +24,12 @@
                 </li>
               {% endif %}
               {% endblock %}
-
+              
               {% block content %}
               {% if user.is_authenticated %}
+              <!-- Change this to become a collapsible Navbar -->
                   <li class="nav-item">
-                      <a class="nav-link" href="/accounts/login/">{{user.username}}</a>
+                      <a class="nav-link" href="/accounts/login/">{{user.first_name}}</a>
                   </li>
               {% else %}
                   <li class="nav-item">
@@ -45,7 +45,9 @@
         <div class="jumbotron text-center ">
     
         {% if user.is_authenticated %}
-          <p>Logged in as {{ user.username }}</p>
+          <p>Logged in as</p>
+          <p>{{ user.first_name }} {{ user.last_name }}</p>
+          <p>{{ user.email }}</p>
         <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
