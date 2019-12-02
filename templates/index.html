@@ -52,9 +52,13 @@
                           </div>
                           <div class="col-md-8">
                               <div class="card-body">
-                                  <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
+                                  {% if user.is_authenticated %}
+                                    <h5 class="card-title"><a href="/accounts/{{ Ride.owner.username }}/">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s</a> Ride</h5>
+                                  {% else %}
+                                    <h5 class="card-title">{{Ride.owner.first_name}} {{Ride.owner.last_name}}'s Ride</h5>
+                                  {% endif %}
                                   <p class="card-title">Email: {{Ride.owner.email}}</p>
-                                  <p class="card-title">Phone Number: {{user.profile.phone_number}}</p>
+                                  <p class="card-title">Phone Number: {{user.profile.phone_num}}</p>
                                   <p class="card-text">This ride is leaving from: {{Ride.origin}}, {{Ride.origin_state}}</p>
                                   <p class="card-text">There are currently {{Ride.seats_available}} seats available</p>
                                   <p class="card-text">The driver is asking ${{ Ride.asking_price }} from each rider</p>
@@ -109,5 +113,3 @@
   }
   </script>
 {% endblock %}
-
-

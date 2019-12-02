@@ -90,6 +90,10 @@ def Account_Info(request):
         'profile_form': profile_form
     })
 
+def seeProfile(request, user_id):
+    user = User.objects.get(username=user_id)
+    return render(request, 'profile.html', {'user' : user})
+
 def Logout(request):
     logout(request)
     return HttpResponseRedirect('/')

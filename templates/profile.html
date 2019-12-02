@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card mb-3" style="width : 40%; margin: 0 auto;">
+				<div class="card-body" style="text-align: center;">
+		          <h3 class="card-title">{{user.first_name}} {{user.last_name}}'s Profile</h3>
+		          <p class="card-title"><b>Email:</b> {{user.email}}</p>
+		          {% if user.profile.phone_number %}
+		          	<p class="card-title"><b>Phone Number:</b> {{user.profile.phone_number}}</p>
+		          {% endif %}
+		          {% if user.profile.car %}
+		          	<p class="card-title"><b>Car:</b> {{user.profile.car}}</p>
+		          {% endif %}
+		          {% if user.profile.hometown %}
+		          	<p class="card-title"><b>Hometown:</b> {{user.profile.hometown}}</p>
+		          {% endif %}
+		          {% if user.profile.bio %}
+		          	<p class="card-title"><b>Bio:</b> {{user.profile.bio}}</p>
+		          {% endif %}
+	          </div>
+	          </div>
+	      </div>
+	  </div>
+	</div>
+</html>
+{% endblock %}
